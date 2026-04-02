@@ -1,0 +1,1964 @@
+```js
+/**
+this  codechecks for if a player isholding a bow or crossbow and if yes then crete and show a btn thts is also styled inside it
+ */ function No() {
+            var oo, Fo, Ho, Ao;
+            const ho = null === (oo = (0,
+            ro.vF)().bv.tI((0,
+            ro.vF)().cF)) || void 0 === oo ? void 0 : oo.RI
+              , Eo = null === ho || void 0 === ho ? void 0 : ho.isGun()
+              , vo = (0,
+            Go.lb)("touchscreenActionButton")
+              , Io = Eo ? [{
+                icon: "arrows-rotate"
+            }] : vo;
+            let Po = null;
+            Eo || null !== ho && void 0 !== ho && null !== (Fo = ho.typeObj) && void 0 !== Fo && Fo.holdAsAiming && (null === ho || void 0 === ho || null === (Ho = ho.typeObj) || void 0 === Ho || !Ho.hideAimingUI) ? Po = [{
+                icon: "Arrow"
+            }] : "Chargeable" === (null === ho || void 0 === ho || null === (Ao = ho.typeObj) || void 0 === Ao ? void 0 : Ao.type) && (Po = [{
+                icon: ho.typeObj.name
+            }]);
+            const To = Eo ? [{
+                icon: "crosshairs"
+            }] : null
+              , [iF,to] = (0,
+            no.useReducer)((oo => oo + 1), 0);
+            zo = to,
+            (0,
+            no.XF)(( () => () => {
+                zo = void 0
+            }
+            ), []);
+            const Ro = [{
+                bottom: 6,
+                right: 15,
+                size: 5
+            }, {
+                bottom: 12,
+                right: 11,
+                size: 8
+            }, {
+                bottom: 15,
+                right: 5,
+                size: 5
+            }]
+              , mF = [{
+                onPointerDown: () => {
+                    (0,
+                    Ko._b)(so.Ri, !0),
+                    Eo && ho.reload(Date.now())
+                }
+                ,
+                onPointerUp: () => {
+                    (0,
+                    Ko._b)(so.Ri, !1)
+                }
+            }, {
+                onPointerDown: () => {
+                    null === ho || void 0 === ho || ho.touchDownSecondary()
+                }
+                ,
+                onPointerUp: () => {
+                    null === ho || void 0 === ho || ho.touchUpSecondary()
+                }
+            }, {
+                onPointerDown: () => {
+                    null === ho || void 0 === ho || ho.touchDownTertiary()
+                }
+                ,
+                onPointerUp: () => {
+                    null === ho || void 0 === ho || ho.touchUpTertiary()
+                }
+            }];
+            return (0,
+            Xo.jsx)(Xo.Fragment, {
+                children: [Io, Po, To].map(( (oo, Fo) => {
+                    if (!oo)
+                        return null;
+                    const Ho = Ro[Fo];
+                    return (0,
+                    Xo.jsx)(Do, {
+                        icon: oo,
+                        bottom: Ho.bottom,
+                        right: Ho.right,
+                        size: Ho.size,
+                        pointerDown: m[o].onPointerDown,
+                        pointerUp: mF[Fo].onPointerUp
+                    }, JSON.stringify(oo))
+                }
+                ))
+            })
+        }
+```
+ ```
+/*
+this code is for when a player dmgesother player via a gun nd then create a div fora small amt of time for  the dmging player and etc there was more code above this for guns etc andsettimga new player joined ,itemslot as 1 or null held item if lobby was not joined before 
+*/
+ });
+        var no = Ho(61)
+          , Ao = Ho(554)
+          , Ko = Ho(53)
+          , ho = Ho(1201)
+          , Xo = Ho(73)
+          , Eo = Ho(569)
+          , vo = Ho.n(Eo)
+          , Io = Ho(540);
+        const Po = {}
+          , To = (0,
+        no.memo)((function() {
+            const oo = (0,
+            Ao.V)();
+            return (0,
+            Ko.h)("damagedByOtherPlayer", (Fo => {
+                let {QX: Ho, direction: no} = Fo;
+                const Ao = Ho || "nonDirectional";
+                if (Po[Ao]) {
+                    const Fo = Po[Ao];
+                    clearTimeout(Fo.timeout),
+                    Fo.direction = no,
+                    Fo.timeout = setTimeout(( () => {
+                        delete Po[Ao],
+                        oo()
+                    }
+                    ), 800)
+                } else
+                    Po[Ao] = {
+                        direction: no,
+                        sI: null,
+                        timeout: setTimeout(( () => {
+                            delete Po[Ao],
+                            oo()
+                        }
+                        ), 800)
+                    };
+                oo()
+            }
+            )),
+            (0,
+            Ko.h)("playerKilled", (Fo => {
+                let {deadEId: Ho, killerEId: no} = Fo;
+                no === (0,
+                ho.vF)().xF && Ho in Po && (clearTimeout(Po[Ho].timeout),
+                delete Po[Ho],
+                oo())
+            }
+            )),
+            (0,
+            no.XF)(( () => () => {
+                for (const oo in Po)
+                    clearTimeout(Po[oo].timeout),
+                    delete Po[oo]
+            }
+            ), []),
+            (0,
+            Io.jsx)("div", {
+                className: "DirectionalDamage",
+                children: Object.entries(Po).map((oo => {
+                    let[Fo,Ho] = oo;
+                    const no = (0,
+                    Xo.s)(Ho.direction);
+                    return (0,
+                    Io.jsx)("div", {
+                        ref: oo => {
+                            Po[Fo] && (Po[Fo].sI = oo)
+                        }
+                        ,
+                        className: vo()("DamageIndicator", {
+                            DamageIndicatorFullCircle: no
+                        })
+                    }, Fo)
+                }
+                ))
+            })
+        }
+        ));
+ ```
+
+ ```
+/*
+this code contains both  infoforguns based on aura and abt shotsLeft custom attribute etc
+*/
+  function qo(oo) {
+            var Fo, Ho, no, Xo, Io, Po, To, iF, Ro, so;
+            let {xK: Co} = oo;
+            const [fo,ro] = (0,
+            Ao.hF)(!1)
+              , qo = (0,
+            Ao.useRef)(null)
+              , [eo,Jo] = (0,
+            Ao.hF)(null)
+              , [Wo,yo] = (0,
+            Ao.hF)(null)
+              , Lo = (0,
+            Ko.lb)("maxAuraLevel")
+              , So = Co ? (0,
+            to.getBloxd)().getMetaInfo(Co.name) : null
+              , zo = null !== (Fo = null === So || void 0 === So ? void 0 : So.rootName) && void 0 !== Fo ? Fo : null
+              , Mo = (0,
+            to.vF)()
+              , No = Mo.bv.mP(Mo.cF)
+              , ao = "RequiresAmmo" === (null === So || void 0 === So ? void 0 : So.metaStr)
+              , Do = null !== (Ho = null === No || void 0 === No ? void 0 : No.getAmountOfItem("Ammo")) && void 0 !== Ho ? Ho : 0
+              , uo = (0,
+            Ko.V)()
+              , jF = (0,
+            Ao.useCallback)(( () => {
+                var oo;
+                if (clearTimeout(qo.current),
+                Co) {
+                    var Fo, Ho, no, Ao, Ko, ho, Xo, vo, Io;
+                    const oo = null !== (Fo = null === (Ho = Co.attributes) || void 0 === Ho ? void 0 : Ho.customDisplayName) && void 0 !== Fo ? Fo : (0,
+                    to.getBloxd)().getItemStat((0,
+                    to.vF)().cF, (0,
+                    to.getBloxd)().getMetaInfo(Co.name).rootName, "displayName")
+                      , iF = []
+                      , Ro = Array.isArray(oo) ? oo : [oo]
+                      , so = {
+                        fontStyle: null !== (no = Co.attributes) && void 0 !== no && null !== (Ao = no.customAttributes) && void 0 !== Ao && Ao.author ? "italic" : "normal"
+                    };
+                    for (const Fo of Ro)
+                        Fo.str ? iF.push(Fo) : iF.push({
+                            str: Fo,
+                            style: so
+                        });
+                    if (null !== (Ko = Co.attributes) && void 0 !== Ko && null !== (ho = Ko.customAttributes) && void 0 !== ho && ho.enchantments) {
+                        iF.push(" ");
+                        const oo = Object.entries(Co.attributes.customAttributes.enchantments).sort(( (oo, Fo) => Fo[1] - oo[1]))
+                          , Fo = Co.attributes.customAttributes.enchantmentData;
+                        for (const [Ho,no] of oo) {
+                            var Po, To;
+                            const oo = null !== (Po = null === Fo || void 0 === Fo || null === (To = Fo[Ho]) || void 0 === To ? void 0 : To.icon) && void 0 !== Po ? Po : "".concat(Ho, " Enchantment");
+                            var Go;
+                            if (no < 4)
+                                for (let Fo = 0; Fo < no; Fo++)
+                                    iF.push({
+                                        icon: oo,
+                                        style: {
+                                            fontSize: "1.5em"
+                                        }
+                                    });
+                            else
+                                iF.push({
+                                    icon: oo,
+                                    style: {
+                                        fontSize: "1.5em"
+                                    }
+                                }),
+                                iF.push(null !== (Go = (0,
+                                Eo.u)(no)) && void 0 !== Go ? Go : no.toString())
+                        }
+                    }
+                    Jo(iF),
+                    yo(null !== (Xo = null === (vo = Co.attributes) || void 0 === vo || null === (Io = vo.customAttributes) || void 0 === Io ? void 0 : Io.enchantmentTier) && void 0 !== Xo ? Xo : null)
+                } else
+                    Jo(null),
+                    yo(null);
+                ro(!0),
+                uo();
+                const iF = null === Co || void 0 === Co || null === (oo = Co.attributes) || void 0 === oo ? void 0 : oo.customAttributes;
+                void 0 === (null === iF || void 0 === iF ? void 0 : iF.shotsLeft) && (qo.current = setTimeout(( () => {
+                    ro(!1)
+                }
+                ), 2e3))
+            }
+            ), [Co]);
+            (0,
+            Ao.XF)(( () => (jF(),
+            () => {
+                clearTimeout(qo.current),
+                ro(!1)
+            }
+            )), [Co, jF]),
+            (0,
+            vo.h)("serverOption|".concat(zo, "DisplayName"), ( () => {
+                jF(),
+                ro(!0)
+            }
+            )),
+            (0,
+            vo.h)("serverOption|".concat(zo, "GunStats"), ( () => {
+                uo()
+            }
+            ));
+            const loo = zo ? null === (no = (0,
+            to.vF)()) || void 0 === no || null === (Xo = no.EF) || void 0 === Xo ? void 0 : Xo["".concat(zo, "GunStats")] : null
+              , Qo = null !== (Io = null === loo || void 0 === loo ? void 0 : loo.clipSize) && void 0 !== Io ? Io : null === Co || void 0 === Co || null === (Po = Co.typeObj) || void 0 === Po ? void 0 : Po.clipSize
+              , [Oo,Zo] = (0,
+            Ao.hF)(null === Co || void 0 === Co || null === (To = Co.attributes) || void 0 === To || null === (iF = To.customAttributes) || void 0 === iF ? void 0 : iF.shotsLeft);
+            (0,
+            Ao.XF)(( () => {
+                var oo, Fo;
+                Zo(null === Co || void 0 === Co || null === (oo = Co.attributes) || void 0 === oo || null === (Fo = oo.customAttributes) || void 0 === Fo ? void 0 : Fo.shotsLeft)
+            }
+            ), [Co]),
+            (0,
+            vo.h)("localPlayerNewShotsLeft", (oo => {
+                Zo(oo)
+            }
+            ));
+            const xo = (0,
+            ho.f)();
+            return (0,
+            mF.jsx)(mF.Fragment, {
+                children: fo && Co ? (0,
+                mF.jsxs)("div", {
+                    className: Go()("SelectedItemName SmallTextBold", {
+                        NoAuraBar: 0 === Lo,
+                        Enchanted: null !== Wo
+                    }),
+                    style: {
+                        bottom: "".concat(Math.min(Math.round(.05 * xo), 70), "px"),
+                        "--enchantmentColour": null !== (Ro = Eo.I[Wo]) && void 0 !== Ro ? Ro : Eo.I.None,
+                        "--duration": Eo.F["Tier 5"] / (null !== (so = Eo.F[Wo]) && void 0 !== so ? so : Eo.F.None) + "s"
+                    },
+                    children: [Wo && (0,
+                    mF.jsxs)("div", {
+                        className: "SelectedItemNameGradient",
+                        children: [(0,
+                        mF.jsx)(Ko.M, {
+                            text: eo
+                        }), void 0 !== Oo ? (0,
+                        mF.jsx)("div", {
+                            className: "SelectedItemShotsLeft",
+                            children: "".concat(Oo, "|").concat(ao ? "".concat(Do, "x").concat(Qo) : Qo)
+                        }) : null]
+                    }), (0,
+                    mF.jsxs)("div", {
+                        className: "SelectedItemNameNormal",
+                        children: [(0,
+                        mF.jsx)(Ko.M, {
+                            text: eo
+                        }), void 0 !== Oo ? (0,
+                        mF.jsx)("div", {
+                            className: "SelectedItemShotsLeft",
+                            children: "".concat(Oo, "|").concat(ao ? "".concat(Do, "x").concat(Qo) : Qo)
+                        }) : null]
+                    })]
+                }) : null
+            })
+        }
+ ```
+
+ ```
+/*
+this code checks if a chectis a iron chest and  if so creates a UI and a password as 0,0,0,0
+*/
+function Ro(oo) {
+            let {digit: Fo, onPasskeyDigitUpdated: Ho} = oo;
+            return (0,
+            Go.jsx)("div", {
+                className: "IronChestPasskeyDigitInputWrapper",
+                children: (0,
+                Go.jsxs)("div", {
+                    className: "IronChestPasskeyDigitInput",
+                    children: [(0,
+                    Go.jsx)(Io.l, {
+                        className: "IronChestPasskeyChangeDigitButton",
+                        onClick: () => {
+                            Ho(Po.c.mod(Fo + 1, 10))
+                        }
+                        ,
+                        children: (0,
+                        Go.jsx)("i", {
+                            className: "fas fa-angle-up"
+                        })
+                    }), (0,
+                    Go.jsx)("div", {
+                        className: "SmallTextBold IronChestPasskeyDigit",
+                        children: Fo
+                    }), (0,
+                    Go.jsx)(Io.l, {
+                        className: "IronChestPasskeyChangeDigitButton",
+                        onClick: () => {
+                            Ho(Po.c.mod(Fo - 1, 10))
+                        }
+                        ,
+                        children: (0,
+                        Go.jsx)("i", {
+                            className: "fas fa-angle-down"
+                        })
+                    })]
+                })
+            })
+        }
+    }
+ ```
+
+```
+/*
+here the noa container represents that the game canvas is being used and is folowed by aot ofmob info ,mob meta infoandmob owner dbid and etc there were even more functions like this but the files are too large tobe even copied line by line ;_;
+*/
+
+ const ao = {};
+        function Do(oo) {
+            let {icon: Fo, bottom: Ho, right: Ao, size: Ko, pointerDown: ho, pointerUp: Eo} = oo;
+            const vo = JSON.stringify(Fo)
+              , Io = (0,
+            no.useRef)(!1)
+              , Po = (0,
+            no.useRef)({
+                centreX: 0,
+                centreY: 0,
+                radius: 0
+            })
+              , [To,iF] = (0,
+            Ro.b)();
+            (0,
+            no.XF)(( () => {
+                const oo = document.getElementById(vo).getBoundingClientRect()
+                  , Fo = oo.left + oo.width / 2
+                  , Ho = oo.top + oo.height / 2
+                  , no = oo.width / 2;
+                Po.current = {
+                    centreX: Fo,
+                    centreY: Ho,
+                    radius: no
+                }
+            }
+            ), [To, iF]);
+            const to = oo => {
+                mF(oo.changedTouches[0].clientX, oo.changedTouches[0].clientY) && (Io.current = !0,
+                ho())
+            }
+              , so = () => {
+                Io.current && (Io.current = !1,
+                Eo())
+            }
+              , mF = (oo, Fo) => Math.hypot(oo - Po.current.centreX, Fo - Po.current.centreY) < Po.current.radius;
+            return (0,
+            no.XF)(( () => (ao[vo] = mF,
+            () => {
+                delete ao[vo]
+            }
+            )), [vo]),
+            (0,
+            no.XF)(( () => {
+                const oo = document.getElementById("noa-container");
+                return oo.addEventListener("touchstart", to, {
+                    passive: !0
+                }),
+                oo.addEventListener("touchend", so, {
+                    passive: !0
+                }),
+                () => {
+                    oo.removeEventListener("touchstart", to),
+                    oo.removeEventListener("touchend", so)
+                }
+            }
+            )),
+            (0,
+            Xo.jsx)("div", {
+                className: "TouchArbitraryActionButton TouchButton",
+                id: vo,
+                style: {
+                    bottom: "".concat(Ho, "rem"),
+                    right: "".concat(Ao, "rem"),
+                    width: "".concat(Ko, "rem"),
+                    height: "".concat(Ko, "rem"),
+                    fontSize: "".concat(2 * Ko / 5, "rem")
+                },
+                children: (0,
+                Xo.jsx)(Go.M, {
+                    text: Fo
+                })
+            })
+        }
+    }
+    ,
+    17925: (oo, Fo, Ho) => {
+        Ho.d(Fo, {
+            c: () => UH,
+            d: () => BH,
+            g: () => YH
+        });
+        var no = Ho(25)
+          , Ao = Ho(633)
+          , Ko = Ho(430)
+          , ho = Ho(114)
+          , Xo = Ho(75)
+          , Eo = Ho(17934)
+          , vo = Ho(681)
+          , Io = Ho(715)
+          , Po = Ho(89)
+          , To = Ho(1201);
+        let Go = 0;
+        const iF = [];
+        class to {
+            constructor(oo) {
+                this.xI = void 0,
+                this.sessionId = void 0,
+                this.cI = [],
+                this.pI = Go++,
+                this.dI = !1,
+                this.fH = 0,
+                this.xI = oo,
+                this.sessionId = oo.sessionId,
+                iF[this.pI] = [],
+                this.xI.ZF("*", ( (oo, Fo) => {
+                    this.dI ? this.VI(oo, Fo) : this.cI.push({
+                        id: oo,
+                        payload: Fo
+                    })
+                }
+                ))
+            }
+            VI(oo, Fo) {
+                try {
+                    (0,
+                    vo.Xb)(oo) && (Fo = (0,
+                    vo.c)(oo, Io.HF.from(Fo))),
+                    iF[this.pI][oo](Fo)
+                } catch (no) {
+                    var Ho;
+                    null === (Ho = (0,
+                    To.vF)()) || void 0 === Ho || Ho.qI("Error in onMessage ".concat(oo, " with payload ").concat(JSON.stringify(Fo)), no)
+                } finally {
+                    this.fH++
+                }
+            }
+            wI() {
+                for (const {id: oo, payload: Fo} of this.cI)
+                    this.VI(oo, Fo)
+            }
+            bI() {
+                if (this.dI)
+                    throw new Error("Trying to getOnMessageRegistrationHandler after registration finished");
+                return {
+                    ZF: (oo, Fo) => {
+                        if (this.dI)
+                            throw new Error("Trying to call onMessage after registration finished");
+                        this.ZF(oo, Fo)
+                    }
+                    ,
+                    finishRegistration: () => {
+                        this.dI = !0,
+                        this.wI()
+                    }
+                }
+            }
+            ZF(oo, Fo) {
+                (0,
+                Po.g)(!0) && (0,
+                Ao.ic)();
+                const Ho = iF[this.pI];
+                for (; oo > Ho.length; )
+                    Ho[Ho.length] = null;
+                Ho[oo] = Fo
+            }
+            send(oo, Fo) {
+                5 === Ro++ && ((0,
+                Po.g)(!0) && (0,
+                Ao.ic)(),
+                Ro = 0),
+                (0,
+                Ao.Y)(Fo) ? this.xI.BI(oo, Fo) : this.xI.send(oo, Fo)
+            }
+            KF() {
+                this.xI.KF()
+            }
+            xv() {
+                this.xI.xv()
+            }
+        }
+        let Ro = 0;
+        var so = Ho(53)
+          , mF = Ho(416)
+          , Co = Ho(1452)
+          , fo = Ho(123);
+        const ro = new Set(["createdByUserCode", "isWhole", "wasDeleted"]);
+        var qo, eo, Jo, Wo, yo, Lo, So, zo, Mo, No, ao, Do, uo, jF, loo, Qo, Oo, Zo, xo, co, po, Vo, wo, bo, Bo, Yo, Uo, go, kF, oF, FF, HF, nF, AF, KF, hF, XF, EF, vF, IF, PF, TF, GF, iH, tF, RF, sF, mH, CF, fF, rF, qF, eF, JF, WF, yF, LF, SF, zF, MF, NF, aF, DF, uF, jH, lF, QF, OF, ZF, xF, cF, pF, dF, VF, wF, bF, BF, YF, UF = Ho(444), gF = Ho(129), kH = Ho(17943), oH = Ho(17945), FH = Ho(17819);
+        let HH = (qo = (0,
+        FH.type)("number"),
+        eo = (0,
+        FH.type)("number"),
+        Jo = (0,
+        FH.type)("number"),
+        Wo = (0,
+        FH.type)("number"),
+        yo = (0,
+        FH.type)("number"),
+        Lo = (0,
+        FH.type)("number"),
+        So = (0,
+        FH.type)("string"),
+        zo = class extends FH.Schema {
+            constructor() {
+                super(...arguments),
+                (0,
+                kH.d)(this, "id", Mo, this),
+                (0,
+                kH.d)(this, "amount", No, this),
+                (0,
+                kH.d)(this, "x", ao, this),
+                (0,
+                kH.d)(this, "y", Do, this),
+                (0,
+                kH.d)(this, "z", uo, this),
+                (0,
+                kH.d)(this, "size", jF, this),
+                (0,
+                kH.d)(this, "attributes", loo, this)
+            }
+        }
+        ,
+        Mo = (0,
+        oH.d)(zo.prototype, "id", [qo], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        No = (0,
+        oH.d)(zo.prototype, "amount", [eo], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        ao = (0,
+        oH.d)(zo.prototype, "x", [Jo], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        Do = (0,
+        oH.d)(zo.prototype, "y", [Wo], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        uo = (0,
+        oH.d)(zo.prototype, "z", [yo], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        jF = (0,
+        oH.d)(zo.prototype, "size", [Lo], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 1
+            }
+        }),
+        loo = (0,
+        oH.d)(zo.prototype, "attributes", [So], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return "{}"
+            }
+        }),
+        zo)
+          , nH = (Qo = (0,
+        FH.type)("boolean"),
+        Oo = (0,
+        FH.type)("number"),
+        Zo = (0,
+        FH.type)("number"),
+        xo = (0,
+        FH.type)("number"),
+        co = (0,
+        FH.type)("number"),
+        po = class extends FH.Schema {
+            constructor() {
+                super(...arguments),
+                (0,
+                kH.d)(this, "collideEntities", Vo, this),
+                (0,
+                kH.d)(this, "YI", wo, this),
+                (0,
+                kH.d)(this, "UI", bo, this),
+                (0,
+                kH.d)(this, "widthExpandAmount", Bo, this),
+                (0,
+                kH.d)(this, "heightExpandAmount", Yo, this)
+            }
+        }
+        ,
+        Vo = (0,
+        oH.d)(po.prototype, "collideEntities", [Qo], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return !1
+            }
+        }),
+        wo = (0,
+        oH.d)(po.prototype, "YI", [Oo], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        bo = (0,
+        oH.d)(po.prototype, "UI", [Zo], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        Bo = (0,
+        oH.d)(po.prototype, "widthExpandAmount", [xo], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        Yo = (0,
+        oH.d)(po.prototype, "heightExpandAmount", [co], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        po)
+          , AH = (Uo = (0,
+        FH.type)("string"),
+        go = (0,
+        FH.type)("string"),
+        kF = (0,
+        FH.type)("number"),
+        oF = (0,
+        FH.type)("number"),
+        FF = (0,
+        FH.type)("number"),
+        HF = (0,
+        FH.type)("float32"),
+        nF = (0,
+        FH.type)("float32"),
+        AF = (0,
+        FH.type)("float32"),
+        KF = (0,
+        FH.type)("float32"),
+        hF = (0,
+        FH.type)("boolean"),
+        XF = (0,
+        FH.type)("boolean"),
+        EF = (0,
+        FH.type)("float32"),
+        vF = (0,
+        FH.type)("boolean"),
+        IF = (0,
+        FH.type)("string"),
+        PF = (0,
+        FH.type)("string"),
+        TF = (0,
+        FH.type)("string"),
+        GF = (0,
+        FH.type)("string"),
+        iH = (0,
+        FH.type)(["number"]),
+        tF = (0,
+        FH.type)("boolean"),
+        RF = (0,
+        FH.type)(["number"]),
+        sF = (0,
+        FH.type)("number"),
+        mH = (0,
+        FH.type)(nH),
+        CF = class extends FH.Schema {
+            constructor() {
+                super(...arguments),
+                (0,
+                kH.d)(this, "type", fF, this),
+                (0,
+                kH.d)(this, "name", rF, this),
+                (0,
+                kH.d)(this, "x", qF, this),
+                (0,
+                kH.d)(this, "y", eF, this),
+                (0,
+                kH.d)(this, "z", JF, this),
+                (0,
+                kH.d)(this, "xRotation", WF, this),
+                (0,
+                kH.d)(this, "yRotation", yF, this),
+                (0,
+                kH.d)(this, "zRotation", LF, this),
+                (0,
+                kH.d)(this, "speed", SF, this),
+                (0,
+                kH.d)(this, "jumping", zF, this),
+                (0,
+                kH.d)(this, "crouching", MF, this),
+                (0,
+                kH.d)(this, "cameraPitch", NF, this),
+                (0,
+                kH.d)(this, "armSwinging", aF, this),
+                (0,
+                kH.d)(this, "heldItemName", DF, this),
+                (0,
+                kH.d)(this, "heldItemEnchantmentTier", uF, this),
+                (0,
+                kH.d)(this, "pose", jH, this),
+                (0,
+                kH.d)(this, "followingEId", lF, this),
+                (0,
+                kH.d)(this, "followingOffset", QF, this),
+                (0,
+                kH.d)(this, "shouldMatchFollowingEntityRotation", OF, this),
+                (0,
+                kH.d)(this, "meshOffset", ZF, this),
+                (0,
+                kH.d)(this, "baseRenderHeading", xF, this),
+                (0,
+                kH.d)(this, "collideEntities", cF, this)
+            }
+        }
+        ,
+        fF = (0,
+        oH.d)(CF.prototype, "type", [Uo], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: null
+        }),
+        rF = (0,
+        oH.d)(CF.prototype, "name", [go], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return ""
+            }
+        }),
+        qF = (0,
+        oH.d)(CF.prototype, "x", [kF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        eF = (0,
+        oH.d)(CF.prototype, "y", [oF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        JF = (0,
+        oH.d)(CF.prototype, "z", [FF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        WF = (0,
+        oH.d)(CF.prototype, "xRotation", [HF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        yF = (0,
+        oH.d)(CF.prototype, "yRotation", [nF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        LF = (0,
+        oH.d)(CF.prototype, "zRotation", [AF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        SF = (0,
+        oH.d)(CF.prototype, "speed", [KF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        zF = (0,
+        oH.d)(CF.prototype, "jumping", [hF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return !1
+            }
+        }),
+        MF = (0,
+        oH.d)(CF.prototype, "crouching", [XF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return !1
+            }
+        }),
+        NF = (0,
+        oH.d)(CF.prototype, "cameraPitch", [EF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        aF = (0,
+        oH.d)(CF.prototype, "armSwinging", [vF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return !1
+            }
+        }),
+        DF = (0,
+        oH.d)(CF.prototype, "heldItemName", [IF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: null
+        }),
+        uF = (0,
+        oH.d)(CF.prototype, "heldItemEnchantmentTier", [PF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: null
+        }),
+        jH = (0,
+        oH.d)(CF.prototype, "pose", [TF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return "standing"
+            }
+        }),
+        lF = (0,
+        oH.d)(CF.prototype, "followingEId", [GF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: null
+        }),
+        QF = (0,
+        oH.d)(CF.prototype, "followingOffset", [iH], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return new FH.ArraySchema(0,0,0)
+            }
+        }),
+        OF = (0,
+        oH.d)(CF.prototype, "shouldMatchFollowingEntityRotation", [tF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return !0
+            }
+        }),
+        ZF = (0,
+        oH.d)(CF.prototype, "meshOffset", [RF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return new FH.ArraySchema(0,0,0)
+            }
+        }),
+        xF = (0,
+        oH.d)(CF.prototype, "baseRenderHeading", [sF], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return 0
+            }
+        }),
+        cF = (0,
+        oH.d)(CF.prototype, "collideEntities", [mH], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function() {
+                return new nH
+            }
+        }),
+        CF)
+          , KH = (pF = (0,
+        FH.type)("string"),
+        dF = (0,
+        FH.type)("string"),
+        VF = (0,
+        FH.type)("string"),
+        wF = class extends AH {
+            constructor() {
+                super(...arguments),
+                (0,
+                kH.d)(this, "variation", bF, this),
+                (0,
+                kH.d)(this, "ownerDbId", BF, this),
+                (0,
+                kH.d)(this, "metaInfo", YF, this)
+            }
+        }
+```
+
+```
+/*
+alot of throwable entities that dmg or change the player sate in anyform are mentioned here with functiona and mmsg details and info such that even if a player is teleported the tp invulnerability wont work if dmgedor given an  effectthrough these items (i aint surewhy boomerangsare here though)
+*/
+var sH = Ho(142)
+          , mn = Ho.n(sH)
+          , CH = Ho(18174)
+          , fH = Ho(18472)
+          , rH = Ho(1838)
+          , qH = Ho(18533)
+          , eH = Ho(18187)
+          , JH = Ho(18586)
+          , WH = Ho(18777)
+          , yH = Ho(1427)
+          , LH = Ho(619)
+          , SH = Ho(17911)
+          , zH = Ho(17915)
+          , MH = Ho(1800)
+          , NH = Ho(1326)
+          , aH = Ho(1458)
+          , DH = Ho(1518)
+          , uH = Ho(1741)
+          , jn = Ho(17977)
+          , lH = Ho(18448)
+          , QH = Ho(18908);
+        const OH = ["description", "label"];
+        var ZH = Ho(18912)
+          , xH = Ho(1172)
+          , cH = Ho(18914);
+        class pH {
+            constructor(oo, Fo, Ho) {
+                this.gameNameWithVariation = oo,
+                this.msgHandler = Fo,
+                this.Ko = Ho,
+                this.cantPickUpItems = new Set
+            }
+            setupStateReplicationHandlers() {
+                const oo = this.msgHandler
+                  , Fo = this.Ko
+                  , Ho = {
+                    x: 0,
+                    y: 1,
+                    z: 2
+                }
+                  , Ko = (0,
+                no.d)((0,
+                no.d)((0,
+                no.d)({}, Object.fromEntries(fo.g.map((oo => {
+                    const {fn: Fo} = (0,
+                    tH.i)(oo);
+                    return [oo, Fo]
+                }
+                )))), {}, {
+                    Pebble: hH.c,
+                    Snowball: hH.c,
+                    "Snowball Launcher": hH.c,
+                    "Reinforced Pebble": hH.c,
+                    "Reinforced Ball": hH.c,
+                    Ball: hH.c,
+                    Mango: hH.c,
+                    "Moonstone Orb": hH.c
+                }, Object.fromEntries(gF.s.map((oo => [(0,
+                vH.vb)(oo), hH.c])))), {}, {
+                    Arrow: hH.c,
+                    "Arrow of Speed": hH.c,
+                    "Arrow of Poison": hH.c,
+                    "Arrow of Slowness": hH.c,
+                    "Arrow of Weakness": hH.c,
+                    "Arrow of Knockback": hH.c,
+                    "Arrow of Strength": hH.c,
+                    "Arrow of Invisibility": hH.c,
+                    "Arrow of Jumping": hH.c,
+                    "Arrow of Defense": hH.c,
+                    "Arrow of Instant Healing": hH.c,
+                    "Arrow of Instant Damage": hH.c,
+                    "Arrow of Regeneration": hH.c,
+                    "Arrow of Haste": hH.c,
+                    "Arrow of Shield": hH.c,
+                    "Arrow of Double Jump": hH.c,
+                    "Arrow of Heat Resistance": hH.c,
+                    "Arrow of X-Ray Vision": hH.c,
+                    "Arrow of Mining Yield": hH.c,
+                    "Arrow of Brain Rot": hH.c,
+                    "Arrow of Milk": hH.c,
+                    Fireball: hH.c,
+                    "Bouncy Bomb": hH.c,
+                    RPG: hH.c,
+                    "Obby RPG": hH.c,
+                    "Super RPG": hH.c,
+                    "Grenade Launcher": hH.c,
+                    Iceball: hH.c,
+                    Coconut: hH.c,
+                    "Splash Speed Potion": hH.c,
+                    "Splash Defense Potion": hH.c,
+                    "Splash Strength Potion": hH.c,
+                    "Splash Invisibility Potion": hH.c,
+                    "Splash Jump Potion": hH.c,
+                    "Splash Knockback Potion": hH.c,
+                    "Splash Poison Potion": hH.c,
+                    "Splash Speed Potion II": hH.c,
+                    "Splash Defense Potion II": hH.c,
+                    "Splash Strength Potion II": hH.c,
+                    "Splash Jump Potion II": hH.c,
+                    "Splash Knockback Potion II": hH.c,
+                    "Splash Poison Potion II": hH.c,
+                    "Splash Slowness Potion": hH.c,
+                    "Splash Slowness Potion II": hH.c,
+                    "Splash Weakness Potion": hH.c,
+                    "Splash Weakness Potion II": hH.c,
+                    "Splash Milk Potion": hH.c,
+                    "Splash Instant Damage Potion": hH.c,
+                    "Splash Instant Damage Potion II": hH.c,
+                    "Splash Instant Healing Potion": hH.c,
+                    "Splash Instant Healing Potion II": hH.c,
+                    "Splash Regeneration Potion": hH.c,
+                    "Splash Regeneration Potion II": hH.c,
+                    "Splash Haste Potion": hH.c,
+                    "Splash Haste Potion II": hH.c,
+                    "Splash Shield Potion": hH.c,
+                    "Splash Shield Potion II": hH.c,
+                    "Splash Double Jump Potion": hH.c,
+                    "Splash Heat Resistance Potion": hH.c,
+                    "Splash X-Ray Vision Potion": hH.c,
+                    "Splash Mining Yield Potion": hH.c,
+                    "Splash Mining Yield Potion II": hH.c,
+                    "Splash Brain Rot Potion": hH.c,
+                    "Yellow Paintball Gun": hH.c,
+                    "White Paintball Gun": hH.c,
+                    "Red Paintball Gun": hH.c,
+                    "Purple Paintball Gun": hH.c,
+                    "Pink Paintball Gun": hH.c,
+                    "Orange Paintball Gun": hH.c,
+                    "Magenta Paintball Gun": hH.c,
+                    "Lime Paintball Gun": hH.c,
+                    "Light Gray Paintball Gun": hH.c,
+                    "Light Blue Paintball Gun": hH.c,
+                    "Green Paintball Gun": hH.c,
+                    "Gray Paintball Gun": hH.c,
+                    "Cyan Paintball Gun": hH.c,
+                    "Brown Paintball Gun": hH.c,
+                    "Blue Paintball Gun": hH.c,
+                    "Black Paintball Gun": hH.c,
+                    "Yellow Heavy Paintball Gun": hH.c,
+                    "White Heavy Paintball Gun": hH.c,
+                    "Red Heavy Paintball Gun": hH.c,
+                    "Purple Heavy Paintball Gun": hH.c,
+                    "Pink Heavy Paintball Gun": hH.c,
+                    "Orange Heavy Paintball Gun": hH.c,
+                    "Magenta Heavy Paintball Gun": hH.c,
+                    "Lime Heavy Paintball Gun": hH.c,
+                    "Light Gray Heavy Paintball Gun": hH.c,
+                    "Light Blue Heavy Paintball Gun": hH.c,
+                    "Green Heavy Paintball Gun": hH.c,
+                    "Gray Heavy Paintball Gun": hH.c,
+                    "Cyan Heavy Paintball Gun": hH.c,
+                    "Brown Heavy Paintball Gun": hH.c,
+                    "Blue Heavy Paintball Gun": hH.c,
+                    "Black Heavy Paintball Gun": hH.c,
+                    "Toxin Ball": hH.c,
+                    "Splash Aura XP Potion": hH.c,
+                    "Splash Aura XP Potion II": hH.c,
+                    "Arrow of Aura XP": hH.c,
+                    Firecracker: hH.c,
+                    "Rainbow Firecracker": hH.c,
+                    "White Firecracker": hH.c,
+                    "Orange Firecracker": hH.c,
+                    "Magenta Firecracker": hH.c,
+                    "Light Blue Firecracker": hH.c,
+                    "Yellow Firecracker": hH.c,
+                    "Lime Firecracker": hH.c,
+                    "Pink Firecracker": hH.c,
+                    "Gray Firecracker": hH.c,
+                    "Light Gray Firecracker": hH.c,
+                    "Cyan Firecracker": hH.c,
+                    "Purple Firecracker": hH.c,
+                    "Blue Firecracker": hH.c,
+                    "Brown Firecracker": hH.c,
+                    "Green Firecracker": hH.c,
+                    "Red Firecracker": hH.c,
+                    "Black Firecracker": hH.c,
+                    "Firecracker Pebble": hH.c,
+                    "Rainbow Firecracker Pebble": hH.c,
+                    "White Firecracker Pebble": hH.c,
+                    "Orange Firecracker Pebble": hH.c,
+                    "Magenta Firecracker Pebble": hH.c,
+                    "Light Blue Firecracker Pebble": hH.c,
+                    "Yellow Firecracker Pebble": hH.c,
+                    "Lime Firecracker Pebble": hH.c,
+                    "Pink Firecracker Pebble": hH.c,
+                    "Gray Firecracker Pebble": hH.c,
+                    "Light Gray Firecracker Pebble": hH.c,
+                    "Cyan Firecracker Pebble": hH.c,
+                    "Purple Firecracker Pebble": hH.c,
+                    "Blue Firecracker Pebble": hH.c,
+                    "Brown Firecracker Pebble": hH.c,
+                    "Green Firecracker Pebble": hH.c,
+                    "Red Firecracker Pebble": hH.c,
+                    "Black Firecracker Pebble": hH.c,
+                    "Blinding Pebble": hH.c,
+                    Poop: hH.c,
+                    "Wood Boomerang": hH.c,
+                    "Stone Boomerang": hH.c,
+                    "Iron Boomerang": hH.c,
+                    "Gold Boomerang": hH.c,
+                    "Diamond Boomerang": hH.c,
+                    "Moonstone Boomerang": hH.c,
+                    Mesh: RH
+                });
+                oo.xI.state.entities.dv((function(oo, no) {
+                    if (Fo.xF)
+                        ho();
+                    else {
+                        const oo = so.f.DF("initInfoReceived", ( () => {
+                            ho()
+                        }
+                        ));
+                        (0,
+                        Ao.Cb)(( () => {
+                            so.f.unsubscribe(oo),
+                            (0,
+                            To.getBloxd)().updatePositionAndPhysics(Fo.cF, {
+                                type: UF.m.PLAYER,
+                                tier: null
+                            }, !0);
+                            const Ho = Fo.bv.JI(Fo.cF);
+                            Ho && (Ho.movementType = UF.i.NORMAL)
+                        }
+                        ))
+                    }
+                    function ho() {
+                        if (no === Fo.xF)
+                            return void (0,
+                            To.getBloxd)().client.XP(Fo.cF, null, null);
+                        const {type: ho} = oo
+                          , Xo = Ko[ho.split("|")[0]];
+                        (0,
+                        To.getBloxd)().client.XP(no, oo, new Xo((0,
+                        To.getBloxd)(),no,ho));
+                        const Eo = (Ko, ho) => {
+                            if ("followingEId" === Ko) {
+                                const Ho = ho;
+                                if (Ho) {
+                                    var Xo;
+                                    const Ko = oo.followingOffset ? Array.from(oo.followingOffset) : mn().ZERO
+                                      , ho = null === (Xo = oo.shouldMatchFollowingEntityRotation) || void 0 === Xo || Xo;
+                                    Fo.bv.FP(no, "smoothToServerPos"),
+                                    Fo.bv.FP(no, Fo.bv.names.EP),
+                                    Fo.bv.gI(no, Fo.bv.names.EP, {
+                                        vP: (0,
+                                        Ao.p)(Ho),
+                                        offset: Ko,
+                                        IP: ho
+                                    });
+                                    const Eo = so.f.DF("lifeformSetupFinished|".concat(Ho), ( () => {
+                                        if (Fo.bv.oI(no) && oo.followingEId && !Fo.bv.hP(no, Fo.bv.names.EP)) {
+                                            var Ko;
+                                            const ho = oo.followingOffset ? Array.from(oo.followingOffset) : mn().ZERO
+                                              , Xo = null === (Ko = oo.shouldMatchFollowingEntityRotation) || void 0 === Ko || Ko;
+                                            Fo.bv.gI(no, Fo.bv.names.EP, {
+                                                vP: (0,
+                                                Ao.p)(Ho),
+                                                offset: ho,
+                                                IP: Xo
+                                            })
+                                        }
+                                    }
+                                    ));
+                                    (0,
+                                    Ao.Cb)(( () => {
+                                        so.f.unsubscribe(Eo)
+                                    }
+                                    ))
+                                } else if (Fo.bv.hP(no, "smoothToServerPos") || Fo.bv.gI(no, "smoothToServerPos"),
+                                Fo.bv.hP(no, Fo.bv.names.EP)) {
+                                    const oo = Fo.bv.oI(no).position
+                                      , Ho = Fo.bv.getState(no, "smoothToServerPos");
+                                    mn().nF(Ho.serverPosition, oo),
+                                    Fo.bv.FP(no, Fo.bv.names.EP)
+                                }
+                            } else if ("xRotation" === Ko || "yRotation" === Ko || "zRotation" === Ko) {
+                                const oo = "xRotation" === Ko ? 0 : "yRotation" === Ko ? 1 : 2;
+                                for (const Ho of (0,
+                                To.getBloxd)().getFollowingEntities(no)) {
+                                    const no = Fo.bv.getState(Ho, "meshRotation")
+                                      , Ao = Fo.bv.PP(Ho);
+                                    no && Ao.IP && (no.serverSetRotation[oo] = ho)
+                                }
+                            } else if ("baseRenderHeading" === Ko) {
+                                const oo = Fo.bv.getState(no, "meshRotation");
+                                oo && (oo.baseRenderRotation[1] = ho);
+                                for (const Ho of (0,
+                                To.getBloxd)().getFollowingEntities(no)) {
+                                    const oo = Fo.bv.getState(Ho, "meshRotation")
+                                      , no = Fo.bv.PP(Ho);
+                                    oo && no.IP && (oo.baseRenderRotation[1] = ho)
+                                }
+                            } else if ("followingOffset" === Ko) {
+                                const oo = Fo.bv.PP(no);
+                                if (oo && oo.offset) {
+                                    const Fo = ho ? Array.from(ho) : mn().ZERO;
+                                    oo.offset[0] = Fo[0],
+                                    oo.offset[1] = Fo[1],
+                                    oo.offset[2] = Fo[2]
+                                }
+                            } else if ("shouldMatchFollowingEntityRotation" === Ko) {
+                                const oo = Fo.bv.PP(no);
+                                oo && (oo.IP = null === ho || void 0 === ho || ho)
+                            }
+                            if (Ko in Ho) {
+                                if (Fo.bv.hP(no, "smoothToServerPos")) {
+                                    Fo.bv.getState(no, "smoothToServerPos").serverPosition[Ho[Ko]] = ho
+                                }
+                            } else
+                                (0,
+                                To.getBloxd)().client.updateEntityField(no, Ko, ho)
+                        }
+                        ;
+                        for (const Fo in oo)
+                            if (oo.hasOwnProperty(Fo)) {
+                                Eo(Fo, oo[Fo]);
+                                const Ho = oo.listen(Fo, ( (oo, Ho) => {
+                                    Eo(Fo, oo)
+                                }
+                                ));
+                                (0,
+                                Ao.Cb)(( () => {
+                                    Ho()
+                                }
+                                ))
+                            }
+                    }
+                }
+                )),
+                oo.xI.state.entities.GF(( (oo, Fo) => {
+                    (0,
+                    To.getBloxd)().client.disposeEntity(Fo)
+                }
+                ));
+                const ho = {};
+                oo.xI.state.items.dv(( (oo, no) => {
+                    ho[no] = oo,
+                    (0,
+                    fH.k)(Fo, no, [oo.x, oo.y, oo.z], oo.id, oo.amount, JSON.parse(oo.attributes), this.cantPickUpItems.has(no), oo.size);
+                    const Ko = (oo, Ao) => {
+                        if (oo in Ho) {
+                            if (Fo.bv.hP(no, "itemState")) {
+                                Fo.bv.getState(no, "smoothToServerPos").serverPosition[Ho[oo]] = Ao
+                            }
+                        } else if (Fo.bv.hP(no, "itemState")) {
+                            const Ho = Fo.bv.getState(no, "itemState");
+                            Ho[oo] = "attributes" === oo ? JSON.parse(Ao) : Ao,
+                            "amount" === oo && (Ho.creationTime = Date.now())
+                        }
+                    }
+                      , Xo = new HH;
+                    for (const Fo in Xo)
+                        if (Xo.hasOwnProperty(Fo)) {
+                            Ko(Fo, oo[Fo]);
+                            const Ho = oo.listen(Fo, ( (oo, Ho) => {
+                                Ko(Fo, oo)
+                            }
+                            ));
+                            (0,
+                            Ao.Cb)(( () => {
+                                Ho()
+                            }
+                            ))
+                        }
+                }
+                )),
+                oo.xI.state.items.GF(( (oo, Ho) => {
+                    delete ho[Ho],
+                    Fo.bv.hP(Ho, Fo.bv.names.itemState) && Fo.bv.deleteEntity(Ho),
+                    this.cantPickUpItems.delete(Ho)
+                }
+                )),
+                (0,
+                Ao.Cb)(( () => {
+                    for (const oo in ho)
+                        Fo.bv.deleteEntity(oo);
+                    this.cantPickUpItems.clear()
+                }
+                )),
+                (0,
+                Ao.Cb)(( () => {
+                    for (const oo of (0,
+                    To.getBloxd)().client.iterateEntityIds())
+                        (0,
+                        To.getBloxd)().client.disposeEntity(oo)
+                }
+                ))
+            }
+            setupOnMessageListeners(oo, Fo) {
+                const Ho = this.Ko
+                  , Ko = this.gameNameWithVariation;
+                function ho() {
+                    return Ho.bv.mP(Ho.cF)
+                }
+                oo.ZF(vo.$b, (oo => {
+                    let {RX: Fo, sX: no, mE: Ao, CX: Ko, fX: ho, rX: Xo, qX: Eo, eX: vo, size: Io} = oo;
+                    (0,
+                    fH.k)(Ho, Fo, [ho, Xo, Eo], no, Ao, JSON.parse(Ko), vo, Io)
+                }
+                )),
+                oo.ZF(vo.Z, (oo => {
+                    this.cantPickUpItems.add(oo),
+                    Ho.bv.hP(oo, "itemState") && (Ho.bv.getState(oo, "itemState").eX = !0)
+                }
+                )),
+                oo.ZF(vo.sd, (oo => {
+                    this.cantPickUpItems.delete(oo),
+                    Ho.bv.hP(oo, "itemState") && (Ho.bv.getState(oo, "itemState").eX = !1)
+                }
+                )),
+                oo.ZF(vo.yc, (oo => {
+                    oo.shopInfo && function(oo, Fo) {
+                        var Ho;
+                        const no = Fo.shopInfo;
+                        Fo.shopInfo = null !== (Ho = oo.EF.shopInfo) && void 0 !== Ho ? Ho : Object.create(null);
+                        const {shopInfo: Ao} = Fo;
+                        for (const Xo in no) {
+                            Ao[Xo] || (Ao[Xo] = Object.create(null),
+                            Ao[Xo].items = Object.create(null));
+                            const oo = no[Xo];
+                            for (const Fo in oo)
+                                "items" !== Fo && (Ao[Xo][Fo] = oo[Fo]);
+                            for (const Fo in oo.items) {
+                                const Ho = oo.items[Fo];
+                                Ho.wasDeleted && delete Ao[Xo].items[Fo];
+                                for (const oo in Ho) {
+                                    var Ko, ho;
+                                    if (!ro.has(oo))
+                                        null !== (ho = (Ko = Ao[Xo].items)[Fo]) && void 0 !== ho || (Ko[Fo] = Object.create(null)),
+                                        Ao[Xo].items[Fo][oo] = Ho[oo]
+                                }
+                            }
+                        }
+                    }(Ho, oo),
+                    dH(Ho, oo)
+                }
+                )),
+                oo.ZF(vo.Bc, (oo => {
+                    let {eId: Fo, settings: Ho} = oo;
+                    (0,
+                    GH.g)(Fo);
+                    for (const no in Ho)
+                        (0,
+                        GH.c)(Fo, no, Ho[no])
+                }
+                )),
+                oo.ZF(vo.we, (oo => {
+                    let {wE: Fo, bE: no, YE: Ko, UE: ho} = oo;
+                    const Xo = [no, Ko, ho];
+                    Ho.bv.setPosition(Ho.cF, Xo),
+                    (0,
+                    Ao._b)(vo.mg, {
+                        rA: Fo,
+                        qA: rH.e
+                    }),
+                    so.f.IF("localPlayerTeleported", {
+                        pos: Xo,
+                        isCorrection: !1
+                    })
+                }
+                )),
+                oo.ZF(vo.Mc, (oo => {
+                    let {bh: Fo, Bh: Ho, Yh: no, Uh: Ao} = oo;
+                    const Ko = [Ho, no, Ao];
+                    so.f.IF("otherPlayerTeleported|".concat(Fo), {
+                        pos: Ko
+                    })
+                }
+                )),
+                oo.ZF(vo.cd, (oo => {
+                    let {TE: Fo, GE: no, iv: Ko, tE: ho, sE: Xo, mv: Eo, CE: Io, rE: Po, fE: To} = oo;
+                    const Go = [no, Ko, ho];
+                    Ho.bv.setPosition(Ho.cF, Go);
+                    const iF = Ho.bv.JI(Ho.cF)
+                      , to = Ho.bv.eI(Ho.cF)
+                      , Ro = CH.g[iF.vehicle.type]
+                      , mF = Ho.entities.TP(Ho.cF);
+                    Ro.setVelocity && Ro.setVelocity(iF, to, mF, [Xo, Eo, Io]),
+                    mn().set(mF._forces, 0, 0, 0),
+                    mn().set(mF._impulses, 0, 0, 0),
+                    mn().set(mF.GP, Xo, Eo, Io),
+                    Ho.entities.TP(Ho.cF).iT(),
+                    Ro.onPositionCorrection && Ro.onPositionCorrection(Ho, Ho.cF, iF, Po),
+                    (0,
+                    Ao._b)(vo.mg, {
+                        rA: Fo,
+                        qA: rH.e
+                    }),
+                    so.f.IF("localPlayerTeleported", {
+                        pos: Go,
+                        isCorrection: !0
+                    })
+                }
+                )),
+                oo.ZF(vo.ib, (oo => {
+                    let {chatMsgId: Fo, content: Ho, chatterEId: no} = oo;
+                    so.f.IF("chat", {
+                        serverChatMsgId: Fo,
+                        content: Ho,
+                        chatterEId: no
+                    }, !0)
+                }
+                )),
+                oo.ZF(vo.Uc, (oo => {
+                    uH.d.onReceiveColyseusPing(oo)
+                }
+                )),
+                oo.ZF(vo.Wd, (oo => {
+                    let {key: Fo, value: Ho} = oo;
+                    (0,
+                    Co.u)(Ko, Fo, Ho)
+                }
+                )),
+                oo.ZF(vo._d, (oo => {
+                    so.f.IF("setDiscordReportKey", oo)
+                }
+                )),
+                oo.ZF(vo.Zb, (Fo => {
+                    let {KE: no, hE: Ko} = Fo;
+                    console.log("Local client is eId", no),
+                    so.f.IF("loadingScreenState", "loadingPage:loadingWorld"),
+                    (0,
+                    Ao.ec)(Ko),
+                    Ho.xF = no,
+                    Ho.bv.hP(Ho.cF, Ho.bv.names.entityName) && Ho.bv.FP(Ho.cF, Ho.bv.names.entityName),
+                    (0,
+                    To.getBloxd)().setEntityName(Ho.xF, (0,
+                    To.getBloxd)().getEntityName(Ho.cF)),
+                    Ho.oP[Ho.xF] = {},
+                    Ho.bv.gI(Ho.cF, Ho.bv.names.entityName),
+                    so.f.IF("initInfoReceived", oo),
+                    Xo.client.onServerConnectionFinalised()
+                }
+                )),
+                oo.ZF(vo.ye, (oo => {
+                    so.f.IF("TopRightHelper", oo, !0)
+                }
+                )),
+                oo.ZF(vo.fd, (oo => {
+                    let {type: Fo, location1: Ho, location2: no, location3: Ao, score: Ko} = oo;
+                    uH.d.progressionEvent({
+                        type: Fo,
+                        location1: Ho,
+                        location2: no,
+                        location3: Ao,
+                        score: Ko
+                    })
+                }
+                )),
+                oo.ZF(vo.Hd, (oo => {
+                    let {type: Fo, resourceType: Ho, amount: no, category: Ao, itemName: Ko} = oo;
+                    uH.d.resourceEvent({
+                        type: Fo,
+                        resourceType: Ho,
+                        amount: no,
+                        category: Ao,
+                        itemName: Ko
+                    })
+                }
+                )),
+                oo.ZF(vo.F, (oo => {
+                    Ho.Zo.tP.add(oo),
+                    Ho.Zo.RP.delete(oo)
+                }
+                )),
+                oo.ZF(vo.P, (oo => {
+                    Ho.Zo.RP.add(oo),
+                    Ho.Zo.tP.delete(oo)
+                }
+                )),
+```
+
+
+```
+/*
+this contains guns or rifles info and meta info etc after this items meta info start 
+*/
+
+  18477: (oo, Fo, Ho) => {
+        Ho.d(Fo, {
+            b: () => so,
+            e: () => mF,
+            g: () => fo,
+            k: () => eo,
+            l: () => Wo,
+            p: () => qo
+        });
+        var no = Ho(25)
+          , Ao = Ho(1867)
+          , Ko = Ho(103)
+          , ho = Ho(1874)
+          , Xo = Ho(1877)
+          , Eo = Ho(1881)
+          , vo = Ho(129);
+        const Io = {
+            "AK-47": {
+                gunType: "semi_automatic",
+                scopeType: "none",
+                muzzleFlashOffsetFromGun: [-5.5, -.25, 0],
+                muzzleFlashScale: 1.5,
+                autoFireWithMouse: !0,
+                fireRate: 800,
+                damage: 20,
+                reloadTime: 2300,
+                clipSize: 30,
+                tagSpeedMult: .8,
+                subsequentTagSpeedReductionScalar: .55,
+                inaccuracyStanding: 10,
+                inaccuracyFromShot: 22,
+                inaccuracyMovement: 45,
+                yVelocityInaccuracy: 4,
+                inaccuracyFromJump: 45,
+                altInaccuracyStanding: 5,
+                altInaccuracyFromShot: 9,
+                altInaccuracyMovement: 28,
+                recoveryRate: .005,
+                minKickback: .023,
+                maxKickback: .06,
+                kickbackRate: 10,
+                kickbackDecreaseRate: 5e-6
+            },
+            M16: {
+                gunType: "semi_automatic",
+                scopeType: "none",
+                muzzleFlashOffsetFromGun: [-5.5, -.5, 0],
+                muzzleFlashScale: 1.5,
+                autoFireWithMouse: !0,
+                fireRate: 900,
+                damage: 17,
+                reloadTime: 2300,
+                clipSize: 30,
+                tagSpeedMult: .8,
+                subsequentTagSpeedReductionScalar: .55,
+                inaccuracyStanding: 8,
+                inaccuracyFromShot: 12,
+                inaccuracyMovement: 35,
+                yVelocityInaccuracy: 4,
+                inaccuracyFromJump: 45,
+                altInaccuracyStanding: 3,
+                altInaccuracyFromShot: 8,
+                altInaccuracyMovement: 20,
+                recoveryRate: .005,
+                minKickback: .022,
+                maxKickback: .06,
+                kickbackRate: 10,
+                kickbackDecreaseRate: 5e-6
+            },
+            MP40: {
+                gunType: "submachine",
+                scopeType: "none",
+                muzzleFlashOffsetFromGun: [-5.5, -.25, 0],
+                muzzleFlashScale: 1.5,
+                autoFireWithMouse: !0,
+                fireRate: 1500,
+                damage: 14,
+                reloadTime: 1700,
+                clipSize: 30,
+                tagSpeedMult: .85,
+                subsequentTagSpeedReductionScalar: .4,
+                inaccuracyStanding: 13,
+                inaccuracyFromShot: 15,
+                inaccuracyMovement: 6,
+                yVelocityInaccuracy: 4,
+                inaccuracyFromJump: 55,
+                altInaccuracyStanding: 11,
+                altInaccuracyFromShot: 12,
+                altInaccuracyMovement: 5,
+                recoveryRate: .005,
+                minKickback: .022,
+                maxKickback: .05,
+                kickbackRate: 10,
+                kickbackDecreaseRate: 5e-6
+            },
+            "TAR-21": {
+                gunType: "rifle",
+                scopeType: "none",
+                muzzleFlashOffsetFromGun: [-7.5, -.5, 0],
+                muzzleFlashScale: 3,
+                autoFireWithMouse: !1,
+                fireRate: 150,
+                fireRateWithHeldTouch: 130,
+                damage: 50,
+                reloadTime: 2300,
+                clipSize: 20,
+                tagSpeedMult: .75,
+                subsequentTagSpeedReductionScalar: .6,
+                inaccuracyStanding: 10,
+                inaccuracyFromShot: 60,
+                inaccuracyMovement: 45,
+                yVelocityInaccuracy: 4,
+                inaccuracyFromJump: 75,
+                altInaccuracyStanding: 6,
+                altInaccuracyFromShot: 40,
+                altInaccuracyMovement: 30,
+                recoveryRate: .0065,
+                minKickback: .04,
+                maxKickback: .05,
+                kickbackRate: 25,
+                kickbackDecreaseRate: 5e-6
+            },
+            M1911: {
+                gunType: "pistol",
+                scopeType: "none",
+                muzzleFlashOffsetFromGun: [-3.5, -1, 0],
+                autoFireWithMouse: !1,
+                fireRate: 800,
+                damage: 22,
+                reloadTime: 1500,
+                clipSize: 16,
+                tagSpeedMult: .8,
+                subsequentTagSpeedReductionScalar: .55,
+                inaccuracyStanding: 15,
+                inaccuracyFromShot: 20,
+                inaccuracyMovement: 15,
+                yVelocityInaccuracy: 1.5,
+                inaccuracyFromJump: 15,
+                altInaccuracyStanding: 12,
+                altInaccuracyFromShot: 12,
+                altInaccuracyMovement: 10,
+                recoveryRate: .01,
+                minKickback: .045,
+                maxKickback: .05,
+                kickbackRate: 0,
+                kickbackDecreaseRate: 8e-6
+            },
+            "One Shot Pistol": {
+                gunType: "semi_automatic",
+                scopeType: "none",
+                muzzleFlashOffsetFromGun: [-3.5, -1, 0],
+                autoFireWithMouse: !1,
+                fireRate: 800,
+                damage: 1,
+                reloadTime: 5e3,
+                clipSize: 1,
+                tagSpeedMult: .8,
+                subsequentTagSpeedReductionScalar: .55,
+                inaccuracyStanding: 0,
+                inaccuracyFromShot: 25,
+                inaccuracyMovement: 15,
+                yVelocityInaccuracy: 1.01,
+                inaccuracyFromJump: 25,
+                altInaccuracyStanding: 10,
+                altInaccuracyFromShot: 25,
+                altInaccuracyMovement: 25,
+                recoveryRate: .005,
+                minKickback: .045,
+                maxKickback: .045,
+                kickbackRate: 0,
+                kickbackDecreaseRate: 5e-6
+            },
+            "Double Barrel": {
+                gunType: "shotgun",
+                scopeType: "none",
+                muzzleFlashOffsetFromGun: [-6.5, -1, 0],
+                muzzleFlashScale: 5,
+                autoFireWithMouse: !1,
+                fireRate: 500,
+                fireRateWithHeldTouch: 160,
+                damage: 12,
+                shotPelletCount: 10,
+                clipSize: 2,
+                reloadBulletsIndividually: !0,
+                bulletReloadTime: 650,
+                cockTime: 400,
+                tagSpeedMult: .65,
+                subsequentTagSpeedReductionScalar: .6,
+                inaccuracyStanding: 110,
+                inaccuracyFromShot: 90,
+                inaccuracyMovement: 28,
+                yVelocityInaccuracy: 5,
+                inaccuracyFromJump: 150,
+                altInaccuracyStanding: 55,
+                altInaccuracyFromShot: 55,
+                altInaccuracyMovement: 16,
+                hasVerticalInaccuracy: !0,
+                recoveryRate: .008,
+                minKickback: .18,
+                maxKickback: .22,
+                kickbackRate: 0,
+                kickbackDecreaseRate: 5e-6
+            },
+            AWP: {
+                gunType: "rifle",
+                scopeType: "sniper",
+                muzzleFlashOffsetFromGun: [-8, -2, 0],
+                muzzleFlashScale: 2,
+                autoFireWithMouse: !1,
+                fireRate: 43,
+                damage: 70,
+                reloadTime: 2500,
+                clipSize: 5,
+                tagSpeedMult: .75,
+                subsequentTagSpeedReductionScalar: .6,
+                inaccuracyStanding: 150,
+                inaccuracyFromShot: 200,
+                inaccuracyMovement: 150,
+                yVelocityInaccuracy: 4,
+                inaccuracyFromJump: 75,
+                altInaccuracyStanding: 1,
+                altInaccuracyFromShot: 1,
+                altInaccuracyMovement: 112,
+                recoveryRate: .02,
+                minKickback: .1,
+                maxKickback: .1,
+                kickbackRate: 0,
+                kickbackDecreaseRate: 5e-6,
+                aimZoomFactor: 3.5
+            },
+            Minigun: {
+                gunType: "submachine",
+                scopeType: "none",
+                muzzleFlashOffsetFromGun: [-8, -2, 0],
+                muzzleFlashScale: 5,
+                autoFireWithMouse: !0,
+                fireRate: 4e3,
+                damage: 20,
+                reloadTime: 2400,
+                clipSize: 100,
+                tagSpeedMult: .75,
+                subsequentTagSpeedReductionScalar: .6,
+                inaccuracyStanding: 25,
+                inaccuracyFromShot: 15,
+                inaccuracyMovement: 20,
+                yVelocityInaccuracy: 4,
+                inaccuracyFromJump: 75,
+                altInaccuracyStanding: 25,
+                altInaccuracyFromShot: 15,
+                altInaccuracyMovement: 20,
+                hasVerticalInaccuracy: !0,
+                recoveryRate: .01,
+                minKickback: .005,
+                maxKickback: .005,
+                kickbackRate: 0,
+                kickbackDecreaseRate: 1e-5
+            }
+        };
+        for (const yo of Object.values(Io)) {
+            var Po, To;
+            yo.msPerRound = 60 / yo.fireRate * 1e3,
+            yo.msPerRoundTouchScreen = void 0 !== yo.fireRateWithHeldTouch ? 60 / yo.fireRateWithHeldTouch * 1e3 : yo.msPerRound,
+            null !== (Po = yo.altYVelocityInaccuracy) && void 0 !== Po || (yo.altYVelocityInaccuracy = yo.yVelocityInaccuracy),
+            null !== (To = yo.altInaccuracyFromJump) && void 0 !== To || (yo.altInaccuracyFromJump = yo.inaccuracyFromJump)
+        }
+        function Go(oo, Fo) {
+            console.assert("meta|charging1" === Fo.rootMetaDesc.split("|").slice(1).join("|"), "charging root item .rootMetaDesc must be |meta|charging1");
+            const Ho = (0,
+            no.d)({}, Fo);
+            return delete Ho.rootMetaDesc,
+            {
+                [oo]: (0,
+                no.d)((0,
+                no.d)({}, Fo), {}, {
+                    textureInfo: Fo.textureName
+                }),
+                ["".concat(oo, "|meta|charging2")]: (0,
+                no.d)((0,
+                no.d)({}, Ho), {}, {
+                    textureInfo: "".concat(Fo.textureName, "_charging_2")
+                }),
+                ["".concat(oo, "|meta|charging3")]: (0,
+                no.d)((0,
+                no.d)({}, Ho), {}, {
+                    textureInfo: "".concat(Fo.textureName, "_charging_3")
+                }),
+                ["".concat(oo, "|meta|charging4")]: (0,
+                no.d)((0,
+                no.d)({}, Ho), {}, {
+                    textureInfo: "".concat(Fo.textureName, "_charging_4")
+                })
+            }
+        }
+        function iF(oo, Fo) {
+            const Ho = (0,
+            no.d)((0,
+            no.d)({
+                type: "Gun",
+                textureInfo: oo,
+                weight: 1,
+                stackable: !1,
+                keepMetaInChest: !0
+            }, Fo), Io[oo]);
+            return {
+                [oo]: Ho,
+                ["".concat(oo, "|RequiresAmmo")]: (0,
+                no.d)((0,
+                no.d)({}, Ho), {}, {
+                    displayName: oo,
+                    heldItemGlb: oo
+                })
+            }
+        }
+        const to = {
+            comboWindowMs: 800,
+            comboMultipliers: [.5, 2 / 3, 5 / 6, 1],
+            backstabAngle: 2 * Math.PI / 3
+        }
+```
+
+```
+/*
+there was alot of infofor items butunfortunately i couldnt take and read all  of it -_-
+*/
+ "Pink Wood Helmet"
+"Splash Instant Damage Potion II": { displayName: { translationKey: "item:splashInstantDamagePotionII" }, type: "Item", textureInfo: "splash_instant_damage_potion", weight: 1, heldItemScale: 1, heldItemGlb: "Splash Instant Damage Potion", stackable: !1, description: { translationKey: "item:splashInstantDamagePotionDescription" } }, "Arrow of Instant Damage": { displayName: { translationKey: "item:arrowOfInstantDamage" }, type: "Item", textureInfo: "instant_damage_arrow", weight: 1, heldItemScale: 1, stackable: !0, secondaryDamage: 1 }, "Milk Potion": { displayName: { translationKey: "item:milkPotion" }, type: "Chargeable", textureInfo: "milk_potion", weight: 1, heldItemScale: 1, eatable: !0, chargeSound: "drink", stackable: !1, afterEatenItem: "Empty Bottle", description: { translationKey: "item:milkPotionDescription" }, chargeStages: 1, chargeTime: 1600, rootMetaDesc: "Milk Potion|meta|charging1" }, "Splash Milk Potion": { displayName: { translationKey: "item:splashMilkPotion" }, type: "Item", textureInfo: "splash_milk_potion", weight: 1, heldItemScale: 1, stackable: !1, description: { translationKey: "item:milkPotionDescription" } }, "Arrow of Milk": { displayName: { translationKey: "item:arrowOfMilk" }, type: "Item", textureInfo: "milk_arrow", weight: 1, heldItemScale: 1, stackable: !0, secondaryDamage: 1 }, "Speed Potion": { displayName: { translationKey: "item:speedPotion" }, type: "Chargeable", textureInfo: "speed_potion", weight: 1, heldItemScale: 1, eatable: !0, chargeSound: "drink", stackable: !1, afterEatenItem: "Empty Bottle", description: { translationKey: "item:speedPotionDescription" }, chargeStages: 1, chargeTime: 1600, rootMetaDesc: "Speed Potion|meta|charging1" },
+ "Pink Wood Helmet"              
+displayName: {
+                    translationKey: "item:pinkWoodHelmet"
+                },
+                type: "GrayscaleArmour",
+                textureInfo: "wood_helmet",
+                weight: 1,
+                heldItemScale: 1,
+                stackable: !1,
+                armourReduction: .07
+            },
+
+```
