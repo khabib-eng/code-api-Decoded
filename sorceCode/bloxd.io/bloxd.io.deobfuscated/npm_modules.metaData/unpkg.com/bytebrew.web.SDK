@@ -1,0 +1,1264 @@
+!function (_0x5e0224, _0xc4b039) {
+  if ("object" == typeof exports && "object" == typeof module) {
+    module.exports = _0xc4b039();
+  } else if ("function" == typeof define && define.amd) {
+    define('ByteBrewSDK', [], _0xc4b039);
+  } else if ("object" == typeof exports) {
+    exports.ByteBrewSDK = _0xc4b039();
+  } else {
+    _0x5e0224.ByteBrewSDK = _0xc4b039();
+  }
+}(this, () => (() => {
+  var _0x513cd3 = {
+    0x286: function (_0xbc04cf) {
+      _0xbc04cf.exports = function () {
+        'use strict';
+
+        function _0x4df801(_0x571c7a) {
+          for (var _0x5f4ba1 = 0x1; _0x5f4ba1 < arguments.length; _0x5f4ba1++) {
+            var _0x2a45c0 = arguments[_0x5f4ba1];
+            for (var _0x2750a9 in _0x2a45c0) _0x571c7a[_0x2750a9] = _0x2a45c0[_0x2750a9];
+          }
+          return _0x571c7a;
+        }
+        function _0x2848f3(_0x2cbd09, _0x3549bd) {
+          function _0x3c74c2(_0x2b41d6, _0x3caad7, _0x3b7d6c) {
+            if ("undefined" != typeof document) {
+              if ('number' == typeof (_0x3b7d6c = _0x4df801({}, _0x3549bd, _0x3b7d6c)).expires) {
+                _0x3b7d6c.expires = new Date(Date.now() + 0x5265c00 * _0x3b7d6c.expires);
+              }
+              if (_0x3b7d6c.expires) {
+                _0x3b7d6c.expires = _0x3b7d6c.expires.toUTCString();
+              }
+              _0x2b41d6 = encodeURIComponent(_0x2b41d6).replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent).replace(/[()]/g, escape);
+              var _0x15042d = '';
+              for (var _0x2ccf96 in _0x3b7d6c) if (_0x3b7d6c[_0x2ccf96]) {
+                _0x15042d += "; " + _0x2ccf96;
+                if (true !== _0x3b7d6c[_0x2ccf96]) {
+                  _0x15042d += '=' + _0x3b7d6c[_0x2ccf96].split(';')[0x0];
+                }
+              }
+              return document.cookie = _0x2b41d6 + '=' + _0x2cbd09.write(_0x3caad7, _0x2b41d6) + _0x15042d;
+            }
+          }
+          function _0x31e3ac(_0x163a13) {
+            if ("undefined" != typeof document && (!arguments.length || _0x163a13)) {
+              var _0x3dd93d = document.cookie ? document.cookie.split("; ") : [];
+              var _0x4e7cfd = {};
+              for (var _0x3637ac = 0x0; _0x3637ac < _0x3dd93d.length; _0x3637ac++) {
+                var _0x4dd10c = _0x3dd93d[_0x3637ac].split('=');
+                var _0x38c9d9 = _0x4dd10c.slice(0x1).join('=');
+                try {
+                  var _0x22778a = decodeURIComponent(_0x4dd10c[0x0]);
+                  _0x4e7cfd[_0x22778a] = _0x2cbd09.read(_0x38c9d9, _0x22778a);
+                  if (_0x163a13 === _0x22778a) {
+                    break;
+                  }
+                } catch (_0x288b9a) {}
+              }
+              return _0x163a13 ? _0x4e7cfd[_0x163a13] : _0x4e7cfd;
+            }
+          }
+          return Object.create({
+            'set': _0x3c74c2,
+            'get': _0x31e3ac,
+            'remove': function (_0x31e5a7, _0x5b8f23) {
+              _0x3c74c2(_0x31e5a7, '', _0x4df801({}, _0x5b8f23, {
+                'expires': -0x1
+              }));
+            },
+            'withAttributes': function (_0x784508) {
+              return _0x2848f3(this.converter, _0x4df801({}, this.attributes, _0x784508));
+            },
+            'withConverter': function (_0x54c4b0) {
+              return _0x2848f3(_0x4df801({}, this.converter, _0x54c4b0), this.attributes);
+            }
+          }, {
+            'attributes': {
+              'value': Object.freeze(_0x3549bd)
+            },
+            'converter': {
+              'value': Object.freeze(_0x2cbd09)
+            }
+          });
+        }
+        return _0x2848f3({
+          'read': function (_0x152783) {
+            if ("\"" === _0x152783[0x0]) {
+              _0x152783 = _0x152783.slice(0x1, -0x1);
+            }
+            return _0x152783.replace(/(%[\dA-F]{2})+/gi, decodeURIComponent);
+          },
+          'write': function (_0x3c8be6) {
+            return encodeURIComponent(_0x3c8be6).replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g, decodeURIComponent);
+          }
+        }, {
+          'path': '/'
+        });
+      }();
+    },
+    0x14e: (_0x2894b7, _0x479e44, _0x29feb7) => {
+      'use strict';
+
+      Object.defineProperty(_0x479e44, "__esModule", {
+        'value': true
+      });
+      _0x479e44.BrowserEventListeners = undefined;
+      const _0x16e00f = _0x29feb7(0x11c);
+      class _0x932ed5 {
+        static ["initializeEventListeners"]() {
+          console.log("ByteBrew: Initializing event listeners");
+          window.addEventListener("beforeunload", _0x932ed5.onBeforeUnload);
+        }
+        static ['onBeforeUnload']() {
+          _0x16e00f.ByteBrewCore.endCurrentSession();
+        }
+      }
+      _0x479e44.BrowserEventListeners = _0x932ed5;
+    },
+    0x2cf: (_0x51a6ba, _0x58b651, _0x2b1d4c) => {
+      'use strict';
+
+      Object.defineProperty(_0x58b651, '__esModule', {
+        'value': true
+      });
+      _0x58b651.ByteBrew = undefined;
+      const _0x11ef32 = _0x2b1d4c(0x11c);
+      const _0x5e0df3 = _0x2b1d4c(0x36e);
+      _0x58b651.ByteBrew = class {
+        static ["initializeByteBrew"](_0x34fe27, _0x554091, _0x58f43b) {
+          _0x11ef32.ByteBrewCore.initializeByteBrew(_0x34fe27, _0x554091, _0x58f43b);
+        }
+        static ["isByteBrewInitialized"]() {
+          return _0x11ef32.ByteBrewCore.isInitialized;
+        }
+        static ["newCustomEvent"](_0xc7bfcb, _0x902bd1) {
+          if (undefined === _0x902bd1) {
+            _0x11ef32.ByteBrewCore.newCustomEvent(_0xc7bfcb);
+          } else if ("string" == typeof _0x902bd1) {
+            _0x11ef32.ByteBrewCore.newCustomEventWithString(_0xc7bfcb, _0x902bd1);
+          } else if ("number" == typeof _0x902bd1) {
+            _0x11ef32.ByteBrewCore.newCustomEventWithNumber(_0xc7bfcb, _0x902bd1);
+          } else if ("object" == typeof _0x902bd1) {
+            _0x11ef32.ByteBrewCore.newCustomEventWithJSONDictionary(_0xc7bfcb, _0x902bd1);
+          }
+        }
+        static ['loadRemoteConfigs'](_0x457993) {
+          _0x5e0df3.RemoteConfigHandler.loadRemoteConfigs(_0x457993);
+        }
+        static ["retreiveRemoteConfigValue"](_0x576107, _0x1ef770) {
+          return _0x5e0df3.RemoteConfigHandler.retreiveRemoteConfigValue(_0x576107, _0x1ef770);
+        }
+        static ["hasRemoteConfigsBeenSet"]() {
+          return _0x5e0df3.RemoteConfigHandler.hasRemoteConfigsBeenSet();
+        }
+        static ["restartTracking"]() {
+          _0x11ef32.ByteBrewCore.restartTracking();
+        }
+        static ["stopTracking"]() {
+          _0x11ef32.ByteBrewCore.stopTracking();
+        }
+        static ["getUserID"]() {
+          return _0x11ef32.ByteBrewCore.userID;
+        }
+      };
+    },
+    0x1b9: function (_0xd3e761, _0x3a1774, _0x5838d7) {
+      'use strict';
+
+      var _0x4365a6 = this && this.__importDefault || function (_0x5aebf4) {
+        return _0x5aebf4 && _0x5aebf4.__esModule ? _0x5aebf4 : {
+          'default': _0x5aebf4
+        };
+      };
+      Object.defineProperty(_0x3a1774, "__esModule", {
+        'value': true
+      });
+      _0x3a1774.ByteBrewCookieManager = undefined;
+      const _0x416b7e = _0x4365a6(_0x5838d7(0x286));
+      const _0x542b04 = _0x5838d7(0x1ad);
+      class _0x2901be {
+        static ["tryGetUserIDFromCookie"]() {
+          const _0xf5af4b = _0x416b7e["default"].get(_0x2901be.userIDCookieKey);
+          return _0xf5af4b ? {
+            'userID': _0xf5af4b,
+            'isNewUser': false,
+            'hasSuccessfullyInitialized': _0x2901be.hasUserInitialized()
+          } : {
+            'userID': _0x2901be.createNewUserCookieAndReturnID(),
+            'isNewUser': true,
+            'hasSuccessfullyInitialized': false
+          };
+        }
+        static ["createNewUserCookieAndReturnID"]() {
+          0x0;
+          const _0x22e707 = _0x542b04.v4();
+          _0x416b7e['default'].set(_0x2901be.userIDCookieKey, _0x22e707, {
+            'expires': 0x16d
+          });
+          return _0x22e707;
+        }
+        static ['setTrackingSettingsCookie'](_0x45aa5b) {
+          const _0x3a465e = _0x45aa5b ? "true" : "false";
+          _0x416b7e["default"].set(_0x2901be.trackingSettingsIDCookieKey, _0x3a465e, {
+            'expires': 0x16d
+          });
+        }
+        static ["getTrackingSettingsCookie"]() {
+          const _0x5e22f9 = _0x416b7e["default"].get(_0x2901be.trackingSettingsIDCookieKey);
+          return !_0x5e22f9 || 'true' === _0x5e22f9;
+        }
+        static ["isTrackingEnabled"]() {
+          return _0x2901be.getTrackingSettingsCookie();
+        }
+        static ['setUserHasInitializedSuccessfullyCookie']() {
+          const _0x3436d7 = _0x416b7e['default'].get(_0x2901be.userIDCookieKey);
+          if (_0x3436d7) {
+            _0x416b7e['default'].set(_0x2901be.userHasInitializedSuccessfullyCookieKey, _0x3436d7, {
+              'expires': 0x16d
+            });
+          }
+        }
+        static ["getAndCompareUserHasInitializedSuccessfullyCookie"]() {
+          const _0x131841 = _0x416b7e["default"].get(_0x2901be.userHasInitializedSuccessfullyCookieKey);
+          const _0x1f7263 = _0x416b7e["default"].get(_0x2901be.userIDCookieKey);
+          return !(!_0x131841 || !_0x1f7263) && _0x131841 === _0x1f7263;
+        }
+        static ['hasUserInitialized']() {
+          return _0x2901be.getAndCompareUserHasInitializedSuccessfullyCookie();
+        }
+      }
+      _0x3a1774.ByteBrewCookieManager = _0x2901be;
+      _0x2901be.userIDCookieKey = "bb_u_id";
+      _0x2901be.trackingSettingsIDCookieKey = "bb_tr_on";
+      _0x2901be.userHasInitializedSuccessfullyCookieKey = 'bb_u_h_init';
+    },
+    0x11c: (_0x1ca196, _0x179d3e, _0x20f58e) => {
+      'use strict';
+
+      Object.defineProperty(_0x179d3e, "__esModule", {
+        'value': true
+      });
+      _0x179d3e.ByteBrewCore = undefined;
+      const _0x2f709e = _0x20f58e(0x1b9);
+      const _0x3c0764 = _0x20f58e(0x31d);
+      const _0x2cbcb6 = _0x20f58e(0x14e);
+      const _0xf69781 = _0x20f58e(0x1ad);
+      const _0x248556 = _0x20f58e(0x93);
+      class _0xbda568 {
+        static ["getCountryCode"]() {
+          let _0x499939 = navigator.language.split('-');
+          if (_0x499939.length < 0x2) {
+            return '??';
+          }
+          let _0x55f894 = _0x499939[_0x499939.length - 0x1];
+          return _0x55f894 || '??';
+        }
+        static ["initializeByteBrew"](_0x9fdf11, _0xf85f9e, _0x47bd3c) {
+          if (_0xbda568.isInitialized) {
+            return;
+          }
+          console.log("ByteBrew: Starting Initialization");
+          if (!_0x9fdf11 || !_0xf85f9e) {
+            return void console.log("ByteBrew: Initialization Failed. Please provide all the required parameters.");
+          }
+          _0xbda568.trackingEnabled = _0x2f709e.ByteBrewCookieManager.isTrackingEnabled();
+          if (!_0xbda568.trackingEnabled) {
+            return void console.log("ByteBrew: Tracking is disabled. Not initializing.");
+          }
+          _0xbda568.appID = _0x9fdf11;
+          _0xbda568.appKey = _0xf85f9e;
+          _0xbda568.appVersion = _0x47bd3c;
+          0x0;
+          _0xbda568.sessionID = _0xf69781.v4();
+          _0xbda568.sessionKey = '';
+          _0xbda568.sdkVersion = _0x248556.version;
+          _0xbda568.language = navigator.language;
+          _0xbda568.country = _0xbda568.getCountryCode();
+          const _0x2e7663 = _0x2f709e.ByteBrewCookieManager.tryGetUserIDFromCookie();
+          _0xbda568.userID = _0x2e7663.userID;
+          if (_0x2e7663.isNewUser || !_0x2e7663.hasSuccessfullyInitialized) {
+            _0xbda568.createNewUserEvent();
+          } else {
+            _0xbda568.createUserEvent();
+          }
+          _0xbda568.sessionStartTime = new Date();
+          _0x2cbcb6.BrowserEventListeners.initializeEventListeners();
+        }
+        static ['reinitializeByteBrew']() {
+          console.log("ByteBrew: Reinitalizing ByteBrew");
+          _0xbda568.initializeByteBrew(_0xbda568.appID, _0xbda568.appKey, _0xbda568.appVersion);
+        }
+        static ["onInitializationSuccessful"](_0x1eb93f) {
+          _0xbda568.sessionKey = _0x1eb93f;
+          _0xbda568.isInitialized = true;
+          _0xbda568.hasBeenInitializedWhilePageOpen = true;
+          _0x2f709e.ByteBrewCookieManager.setUserHasInitializedSuccessfullyCookie();
+          console.log("ByteBrew: Initialization Complete");
+        }
+        static ["startNewSession"]() {
+          if (_0xbda568.hasBeenInitializedWhilePageOpen) {
+            console.log("ByteBrew: Starting New Session");
+            this.reinitializeByteBrew();
+          }
+        }
+        static ["canSendData"]() {
+          return _0xbda568.isInitialized && _0xbda568.trackingEnabled;
+        }
+        static ['getScreenResolution']() {
+          return window.innerWidth + 'x' + window.innerHeight;
+        }
+        static ["getBaseEventObject"]() {
+          return {
+            'game_id': _0xbda568.appID,
+            'user_id': _0xbda568.userID,
+            'session_id': _0xbda568.sessionID,
+            'session_key': _0xbda568.sessionKey,
+            'platform': _0xbda568.platform
+          };
+        }
+        static ["getFullEventObject"]() {
+          return Object.assign(Object.assign({}, _0xbda568.getBaseEventObject()), {
+            'version_number': _0xbda568.appVersion,
+            'sdk_version': _0xbda568.sdkVersion,
+            'deviceScreenSize': _0xbda568.getScreenResolution(),
+            'tracking_enabled': _0xbda568.trackingEnabled
+          });
+        }
+        static ["sendUserEvent"](_0x4bb59a, _0x4385c5) {
+          _0x3c0764.ByteBrewWebRequestor.sendBasicRequest(_0x4bb59a, _0x4385c5).then(_0x2520d0 => {
+            if (_0x2520d0 && _0x2520d0.ok) {
+              const _0x2cb06d = _0x2520d0.headers.get("session_key");
+              if (_0x2cb06d) {
+                _0xbda568.onInitializationSuccessful(_0x2cb06d);
+              } else {
+                console.log("ByteBrew: Initialization Failed! No session key was included in the response");
+              }
+            } else {
+              console.log("ByteBrew: Initialization Failed! Couldn't get session key from ByteBrew: Status " + (_0x2520d0 ? _0x2520d0.status : "No Response"));
+            }
+          });
+        }
+        static ['createUserEvent']() {
+          if (!_0xbda568.trackingEnabled) {
+            return;
+          }
+          console.log("ByteBrew: Creating User Event");
+          let _0x225516 = {
+            'eventType': 'game_open',
+            'userLocale': _0xbda568.language
+          };
+          const _0x18cd70 = Object.assign(Object.assign({}, _0xbda568.getFullEventObject()), {
+            'category': "user",
+            'geo': _0xbda568.country,
+            'externalData': _0x225516
+          });
+          _0xbda568.sendUserEvent(_0x3c0764.ByteBrewWebRequestor.baseURL, _0x18cd70);
+        }
+        static ["createNewUserEvent"]() {
+          if (!_0xbda568.trackingEnabled) {
+            return;
+          }
+          console.log("ByteBrew: Creating New User Event");
+          let _0xced2d4 = {
+            'eventType': "new_user",
+            'userLocale': _0xbda568.language
+          };
+          const _0x196162 = Object.assign(Object.assign({}, _0xbda568.getFullEventObject()), {
+            'category': "user",
+            'geo': _0xbda568.country,
+            'externalData': _0xced2d4
+          });
+          _0xbda568.sendUserEvent(_0x3c0764.ByteBrewWebRequestor.baseURL, _0x196162);
+        }
+        static ['endCurrentSession']() {
+          if (!_0xbda568.canSendData()) {
+            return;
+          }
+          _0xbda568.isInitialized = false;
+          console.log("ByteBrew: Ending Current Session");
+          const _0x554e07 = new Date();
+          let _0x12f5c9 = {
+            'sessionLength': Math.trunc((_0x554e07.getTime() - _0xbda568.sessionStartTime.getTime()) / 0x3e8).toString()
+          };
+          const _0x2e0dc1 = Object.assign(Object.assign({}, _0xbda568.getFullEventObject()), {
+            'category': "game_close",
+            'externalData': _0x12f5c9
+          });
+          _0x3c0764.ByteBrewWebRequestor.sendBasicRequest(_0x3c0764.ByteBrewWebRequestor.baseURL, _0x2e0dc1);
+        }
+        static ["getStringFromJSONDictionary"](_0x9223ba) {
+          let _0x48e878 = '';
+          if (!_0x9223ba) {
+            return _0x48e878;
+          }
+          for (const [_0x4aefde, _0x44030f] of Object.entries(_0x9223ba)) _0x48e878 += _0x4aefde + '=' + _0x44030f + ';';
+          if (_0x48e878.length > 0x0) {
+            _0x48e878 = _0x48e878.slice(0x0, -0x1);
+          }
+          return _0x48e878;
+        }
+        static ["sendCustomEvent"](_0x3c0813, _0x5a3b81) {
+          if (!_0xbda568.canSendData()) {
+            return;
+          }
+          console.log("ByteBrew: Sending Custom Event: " + _0x3c0813);
+          let _0x6ba07e = {
+            'eventType': _0x3c0813
+          };
+          if (_0x5a3b81) {
+            _0x6ba07e = Object.assign(Object.assign({}, _0x6ba07e), {
+              'value': 'object' == typeof _0x5a3b81 ? _0xbda568.getStringFromJSONDictionary(_0x5a3b81) : _0x5a3b81.toString()
+            });
+          }
+          const _0x187d93 = Object.assign(Object.assign({}, _0xbda568.getFullEventObject()), {
+            'category': 'custom',
+            'externalData': _0x6ba07e
+          });
+          _0x3c0764.ByteBrewWebRequestor.sendBasicRequest(_0x3c0764.ByteBrewWebRequestor.baseURL, _0x187d93).then(_0x325c15 => {
+            if (_0x325c15 && _0x325c15.ok) {
+              console.log("ByteBrew: Custom Event Sent Successfully");
+            } else {
+              console.log("ByteBrew: Custom Event Failed to Send: Status " + (_0x325c15 ? _0x325c15.status : "No Response"));
+            }
+          });
+        }
+        static ["newCustomEvent"](_0x5f5317) {
+          _0xbda568.sendCustomEvent(_0x5f5317, null);
+        }
+        static ["newCustomEventWithString"](_0x547aca, _0x28f732) {
+          _0xbda568.sendCustomEvent(_0x547aca, _0x28f732);
+        }
+        static ['newCustomEventWithNumber'](_0x4c3b56, _0x27fa44) {
+          _0xbda568.sendCustomEvent(_0x4c3b56, _0x27fa44);
+        }
+        static ["newCustomEventWithJSONDictionary"](_0x4da2ee, _0x20675a) {
+          _0xbda568.sendCustomEvent(_0x4da2ee, _0x20675a);
+        }
+        static ["restartTracking"]() {
+          console.log("ByteBrew: Restarting Tracking");
+          _0xbda568.trackingEnabled = true;
+          _0x2f709e.ByteBrewCookieManager.setTrackingSettingsCookie(true);
+          _0xbda568.reinitializeByteBrew();
+        }
+        static ["stopTracking"]() {
+          console.log("ByteBrew: Stopping Tracking");
+          _0xbda568.trackingEnabled = false;
+          _0x2f709e.ByteBrewCookieManager.setTrackingSettingsCookie(false);
+        }
+      }
+      _0x179d3e.ByteBrewCore = _0xbda568;
+      _0xbda568.isInitialized = false;
+      _0xbda568.hasBeenInitializedWhilePageOpen = false;
+      _0xbda568.platform = 'Web';
+    },
+    0x31d: function (_0x4b842c, _0x2e6d51, _0x55a72f) {
+      'use strict';
+
+      var _0x1d5b8e = this && this.__awaiter || function (_0x4b5cfc, _0x56c23b, _0x33cd1d, _0x3dfcf7) {
+        return new (_0x33cd1d || (_0x33cd1d = Promise))(function (_0x434817, _0x1ce5df) {
+          function _0x4530e2(_0x174c11) {
+            try {
+              _0x3d22c9(_0x3dfcf7.next(_0x174c11));
+            } catch (_0x29ab0d) {
+              _0x1ce5df(_0x29ab0d);
+            }
+          }
+          function _0x3d1e01(_0x2e2624) {
+            try {
+              _0x3d22c9(_0x3dfcf7['throw'](_0x2e2624));
+            } catch (_0x1d8f36) {
+              _0x1ce5df(_0x1d8f36);
+            }
+          }
+          function _0x3d22c9(_0x211a38) {
+            var _0x5cbca5;
+            if (_0x211a38.done) {
+              _0x434817(_0x211a38.value);
+            } else {
+              _0x5cbca5 = _0x211a38.value;
+              (_0x5cbca5 instanceof _0x33cd1d ? _0x5cbca5 : new _0x33cd1d(function (_0x14360b) {
+                _0x14360b(_0x5cbca5);
+              })).then(_0x4530e2, _0x3d1e01);
+            }
+          }
+          _0x3d22c9((_0x3dfcf7 = _0x3dfcf7.apply(_0x4b5cfc, _0x56c23b || [])).next());
+        });
+      };
+      Object.defineProperty(_0x2e6d51, "__esModule", {
+        'value': true
+      });
+      _0x2e6d51.ByteBrewWebRequestor = undefined;
+      const _0x3ea518 = _0x55a72f(0x11c);
+      class _0x35afef {
+        static ['sendBasicRequest'](_0x34fb41, _0x48f531) {
+          return _0x1d5b8e(this, undefined, undefined, function* () {
+            try {
+              const _0x8f1e2f = {
+                'method': 'POST',
+                'mode': "cors",
+                'headers': {
+                  'Accept': "application/json",
+                  'Content-Type': "application/json;charset=UTF-8",
+                  'sdk-key': _0x3ea518.ByteBrewCore.appKey
+                },
+                'body': JSON.stringify(_0x48f531),
+                'keepalive': true
+              };
+              return yield _0x35afef.sendRequest(_0x34fb41, _0x8f1e2f);
+            } catch (_0x222b64) {
+              console.error(_0x222b64);
+            }
+          });
+        }
+        static ["sendRemoteConfigRequest"](_0x181ad3) {
+          return _0x1d5b8e(this, undefined, undefined, function* () {
+            try {
+              const _0x1a1d42 = {
+                'method': "GET",
+                'mode': 'cors',
+                'headers': {
+                  'Accept': "application/json",
+                  'Content-Type': 'application/json;charset=UTF-8',
+                  'sdk-key': _0x3ea518.ByteBrewCore.appKey,
+                  'user_id': _0x3ea518.ByteBrewCore.userID
+                }
+              };
+              return yield _0x35afef.sendRequest(_0x181ad3, _0x1a1d42);
+            } catch (_0x4854c0) {
+              console.error(_0x4854c0);
+            }
+          });
+        }
+        static ["sendRequest"](_0x6e28f, _0x2d64b9) {
+          return _0x1d5b8e(this, undefined, undefined, function* () {
+            try {
+              const _0x42a35c = yield fetch(_0x6e28f, _0x2d64b9);
+              if (!_0x42a35c.ok) {
+                console.error("Request failed with status " + _0x42a35c.status);
+              }
+              return _0x42a35c;
+            } catch (_0x310244) {
+              console.error(_0x310244);
+            }
+          });
+        }
+      }
+      _0x2e6d51.ByteBrewWebRequestor = _0x35afef;
+      _0x35afef.baseURL = "https://web-platform.bytebrew.io/api/game/logs/add";
+      _0x35afef.remoteConfigURL = "https://web-platform.bytebrew.io/api/game/configurations/remote/";
+    },
+    0x36e: (_0x2490f6, _0x4d5db6, _0x179988) => {
+      'use strict';
+
+      Object.defineProperty(_0x4d5db6, "__esModule", {
+        'value': true
+      });
+      _0x4d5db6.RemoteConfigHandler = undefined;
+      const _0x40b742 = _0x179988(0x11c);
+      const _0xe67644 = _0x179988(0x31d);
+      class _0x9a1404 {
+        static ["setRemoteConfigs"](_0x520fd3) {
+          _0x9a1404.remoteConfigs = _0x520fd3;
+        }
+        static ['hasRemoteConfigsBeenSet']() {
+          return !!_0x9a1404.remoteConfigs;
+        }
+        static ['loadRemoteConfigs'](_0x4a7764) {
+          _0xe67644.ByteBrewWebRequestor.sendRemoteConfigRequest(_0xe67644.ByteBrewWebRequestor.remoteConfigURL + _0x40b742.ByteBrewCore.appID).then(_0x9004dc => {
+            if (_0x9004dc && _0x9004dc.ok) {
+              _0x9004dc.text().then(_0x22148e => {
+                let _0x3a5c77 = null;
+                try {
+                  _0x3a5c77 = new Map(Object.entries(JSON.parse(_0x22148e)));
+                  console.log("ByteBrew: Remote configurations retrieved");
+                } catch (_0x5bc542) {
+                  _0x3a5c77 = null;
+                  console.error("ByteBrew Exception: Failed to parse remote configs");
+                } finally {
+                  _0x9a1404.setRemoteConfigs(_0x3a5c77);
+                  if (_0x3a5c77) {
+                    _0x4a7764(_0x3a5c77);
+                  }
+                }
+              });
+            } else if (_0x9004dc) {
+              console.error("ByteBrew Exception: " + (_0x9004dc ? _0x9004dc.status : "No Response") + " " + (_0x9004dc ? _0x9004dc.statusText : ''));
+            } else {
+              console.error("ByteBrew Exception: Failed to retrieve remote configs");
+            }
+          });
+        }
+        static ["retreiveRemoteConfigValue"](_0x4cf6c9, _0x56295e) {
+          return _0x9a1404.hasRemoteConfigsBeenSet() && _0x9a1404.remoteConfigs.has(_0x4cf6c9) ? _0x9a1404.remoteConfigs.get(_0x4cf6c9) : _0x56295e;
+        }
+      }
+      _0x4d5db6.RemoteConfigHandler = _0x9a1404;
+      _0x9a1404.remoteConfigs = null;
+    },
+    0x1ad: (_0x1f59b6, _0x28b066, _0xc91f65) => {
+      'use strict';
+
+      Object.defineProperty(_0x28b066, "__esModule", {
+        'value': true
+      });
+      Object.defineProperty(_0x28b066, "NIL", {
+        'enumerable': true,
+        'get': function () {
+          return _0x58fc4d["default"];
+        }
+      });
+      Object.defineProperty(_0x28b066, "parse", {
+        'enumerable': true,
+        'get': function () {
+          return _0x4a7f60['default'];
+        }
+      });
+      Object.defineProperty(_0x28b066, "stringify", {
+        'enumerable': true,
+        'get': function () {
+          return _0x2d6d9a["default"];
+        }
+      });
+      Object.defineProperty(_0x28b066, 'v1', {
+        'enumerable': true,
+        'get': function () {
+          return _0x330800["default"];
+        }
+      });
+      Object.defineProperty(_0x28b066, 'v3', {
+        'enumerable': true,
+        'get': function () {
+          return _0x4faa75["default"];
+        }
+      });
+      Object.defineProperty(_0x28b066, 'v4', {
+        'enumerable': true,
+        'get': function () {
+          return _0x46383b["default"];
+        }
+      });
+      Object.defineProperty(_0x28b066, 'v5', {
+        'enumerable': true,
+        'get': function () {
+          return _0x148b8c["default"];
+        }
+      });
+      Object.defineProperty(_0x28b066, "validate", {
+        'enumerable': true,
+        'get': function () {
+          return _0x513e63["default"];
+        }
+      });
+      Object.defineProperty(_0x28b066, 'version', {
+        'enumerable': true,
+        'get': function () {
+          return _0x357d0c["default"];
+        }
+      });
+      var _0x330800 = _0xc91f65(0x3de) && _0xc91f65(0x3de).__esModule ? _0xc91f65(0x3de) : {
+        'default': _0xc91f65(0x3de)
+      };
+      var _0x4faa75 = _0xc91f65(0xed) && _0xc91f65(0xed).__esModule ? _0xc91f65(0xed) : {
+        'default': _0xc91f65(0xed)
+      };
+      var _0x46383b = _0xc91f65(0x163) && _0xc91f65(0x163).__esModule ? _0xc91f65(0x163) : {
+        'default': _0xc91f65(0x163)
+      };
+      var _0x148b8c = _0xc91f65(0x2fc) && _0xc91f65(0x2fc).__esModule ? _0xc91f65(0x2fc) : {
+        'default': _0xc91f65(0x2fc)
+      };
+      var _0x58fc4d = _0xc91f65(0x13a) && _0xc91f65(0x13a).__esModule ? _0xc91f65(0x13a) : {
+        'default': _0xc91f65(0x13a)
+      };
+      var _0x357d0c = _0xc91f65(0x1d0) && _0xc91f65(0x1d0).__esModule ? _0xc91f65(0x1d0) : {
+        'default': _0xc91f65(0x1d0)
+      };
+      var _0x513e63 = _0xc91f65(0x1b3) && _0xc91f65(0x1b3).__esModule ? _0xc91f65(0x1b3) : {
+        'default': _0xc91f65(0x1b3)
+      };
+      var _0x2d6d9a = _0xc91f65(0x8) && _0xc91f65(0x8).__esModule ? _0xc91f65(0x8) : {
+        'default': _0xc91f65(0x8)
+      };
+      var _0x4a7f60 = _0xc91f65(0xde) && _0xc91f65(0xde).__esModule ? _0xc91f65(0xde) : {
+        'default': _0xc91f65(0xde)
+      };
+    },
+    0xa3: (_0x1f62ca, _0x55d515) => {
+      'use strict';
+
+      function _0x1f391a(_0x498db7, _0x5cf67f) {
+        const _0x48c1c7 = (0xffff & _0x498db7) + (0xffff & _0x5cf67f);
+        return (_0x498db7 >> 0x10) + (_0x5cf67f >> 0x10) + (_0x48c1c7 >> 0x10) << 0x10 | 0xffff & _0x48c1c7;
+      }
+      function _0x477432(_0x53f9b5, _0x2b2e5a, _0x9de56c, _0x44cedb, _0x4fa62f, _0x1d0f55) {
+        return _0x1f391a((_0x22bc08 = _0x1f391a(_0x1f391a(_0x2b2e5a, _0x53f9b5), _0x1f391a(_0x44cedb, _0x1d0f55))) << _0x4fa62f | _0x22bc08 >>> 0x20 - _0x4fa62f, _0x9de56c);
+        var _0x22bc08;
+      }
+      Object.defineProperty(_0x55d515, "__esModule", {
+        'value': true
+      });
+      _0x55d515["default"] = undefined;
+      var _0x2e06af = function (_0x5e54a6) {
+        if ("string" == typeof _0x5e54a6) {
+          const _0x14d53d = unescape(encodeURIComponent(_0x5e54a6));
+          _0x5e54a6 = new Uint8Array(_0x14d53d.length);
+          for (let _0x3935ea = 0x0; _0x3935ea < _0x14d53d.length; ++_0x3935ea) {
+            _0x5e54a6[_0x3935ea] = _0x14d53d.charCodeAt(_0x3935ea);
+          }
+        }
+        return function (_0x27c33c) {
+          const _0x488f1f = [];
+          const _0x152608 = 0x20 * _0x27c33c.length;
+          for (let _0x5cbb99 = 0x0; _0x5cbb99 < _0x152608; _0x5cbb99 += 0x8) {
+            const _0x3ab3ca = _0x27c33c[_0x5cbb99 >> 0x5] >>> _0x5cbb99 % 0x20 & 0xff;
+            const _0x4987ed = parseInt("0123456789abcdef".charAt(_0x3ab3ca >>> 0x4 & 0xf) + "0123456789abcdef".charAt(0xf & _0x3ab3ca), 0x10);
+            _0x488f1f.push(_0x4987ed);
+          }
+          return _0x488f1f;
+        }(function (_0x3a16cb, _0xc3570c) {
+          _0x3a16cb[_0xc3570c >> 0x5] |= 0x80 << _0xc3570c % 0x20;
+          _0x3a16cb[0xe + (_0xc3570c + 0x40 >>> 0x9 << 0x4) + 0x1 - 0x1] = _0xc3570c;
+          let _0x2c1453 = 0x67452301;
+          let _0x555ad2 = -0x10325477;
+          let _0x14d514 = -0x67452302;
+          let _0x1323f9 = 0x10325476;
+          for (let _0x486a92 = 0x0; _0x486a92 < _0x3a16cb.length; _0x486a92 += 0x10) {
+            const _0x28f8fd = _0x2c1453;
+            const _0x3356db = _0x555ad2;
+            const _0x3adc43 = _0x14d514;
+            const _0x4efb82 = _0x1323f9;
+            _0x2c1453 = _0x477432(_0x555ad2 & _0x14d514 | ~_0x555ad2 & _0x1323f9, _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92], 0x7, -0x28955b88);
+            _0x1323f9 = _0x477432(_0x2c1453 & _0x555ad2 | ~_0x2c1453 & _0x14d514, _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92 + 0x1], 0xc, -0x173848aa);
+            _0x14d514 = _0x477432(_0x1323f9 & _0x2c1453 | ~_0x1323f9 & _0x555ad2, _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0x2], 0x11, 0x242070db);
+            _0x555ad2 = _0x477432(_0x14d514 & _0x1323f9 | ~_0x14d514 & _0x2c1453, _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92 + 0x3], 0x16, -0x3e423112);
+            _0x2c1453 = _0x477432(_0x555ad2 & _0x14d514 | ~_0x555ad2 & _0x1323f9, _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92 + 0x4], 0x7, -0xa83f051);
+            _0x1323f9 = _0x477432(_0x2c1453 & _0x555ad2 | ~_0x2c1453 & _0x14d514, _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92 + 0x5], 0xc, 0x4787c62a);
+            _0x14d514 = _0x477432(_0x1323f9 & _0x2c1453 | ~_0x1323f9 & _0x555ad2, _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0x6], 0x11, -0x57cfb9ed);
+            _0x555ad2 = _0x477432(_0x14d514 & _0x1323f9 | ~_0x14d514 & _0x2c1453, _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92 + 0x7], 0x16, -0x2b96aff);
+            _0x2c1453 = _0x477432(_0x555ad2 & _0x14d514 | ~_0x555ad2 & _0x1323f9, _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92 + 0x8], 0x7, 0x698098d8);
+            _0x1323f9 = _0x477432(_0x2c1453 & _0x555ad2 | ~_0x2c1453 & _0x14d514, _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92 + 0x9], 0xc, -0x74bb0851);
+            _0x14d514 = _0x477432(_0x1323f9 & _0x2c1453 | ~_0x1323f9 & _0x555ad2, _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0xa], 0x11, -0xa44f);
+            _0x555ad2 = _0x477432(_0x14d514 & _0x1323f9 | ~_0x14d514 & _0x2c1453, _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92 + 0xb], 0x16, -0x76a32842);
+            _0x2c1453 = _0x477432(_0x555ad2 & _0x14d514 | ~_0x555ad2 & _0x1323f9, _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92 + 0xc], 0x7, 0x6b901122);
+            _0x1323f9 = _0x477432(_0x2c1453 & _0x555ad2 | ~_0x2c1453 & _0x14d514, _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92 + 0xd], 0xc, -0x2678e6d);
+            _0x14d514 = _0x477432(_0x1323f9 & _0x2c1453 | ~_0x1323f9 & _0x555ad2, _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0xe], 0x11, -0x5986bc72);
+            _0x555ad2 = _0x477432(_0x14d514 & _0x1323f9 | ~_0x14d514 & _0x2c1453, _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92 + 0xf], 0x16, 0x49b40821);
+            _0x2c1453 = _0x477432(_0x555ad2 & _0x1323f9 | _0x14d514 & ~_0x1323f9, _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92 + 0x1], 0x5, -0x9e1da9e);
+            _0x1323f9 = _0x477432(_0x2c1453 & _0x14d514 | _0x555ad2 & ~_0x14d514, _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92 + 0x6], 0x9, -0x3fbf4cc0);
+            _0x14d514 = _0x477432(_0x1323f9 & _0x555ad2 | _0x2c1453 & ~_0x555ad2, _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0xb], 0xe, 0x265e5a51);
+            _0x555ad2 = _0x477432(_0x14d514 & _0x2c1453 | _0x1323f9 & ~_0x2c1453, _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92], 0x14, -0x16493856);
+            _0x2c1453 = _0x477432(_0x555ad2 & _0x1323f9 | _0x14d514 & ~_0x1323f9, _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92 + 0x5], 0x5, -0x29d0efa3);
+            _0x1323f9 = _0x477432(_0x2c1453 & _0x14d514 | _0x555ad2 & ~_0x14d514, _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92 + 0xa], 0x9, 0x2441453);
+            _0x14d514 = _0x477432(_0x1323f9 & _0x555ad2 | _0x2c1453 & ~_0x555ad2, _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0xf], 0xe, -0x275e197f);
+            _0x555ad2 = _0x477432(_0x14d514 & _0x2c1453 | _0x1323f9 & ~_0x2c1453, _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92 + 0x4], 0x14, -0x182c0438);
+            _0x2c1453 = _0x477432(_0x555ad2 & _0x1323f9 | _0x14d514 & ~_0x1323f9, _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92 + 0x9], 0x5, 0x21e1cde6);
+            _0x1323f9 = _0x477432(_0x2c1453 & _0x14d514 | _0x555ad2 & ~_0x14d514, _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92 + 0xe], 0x9, -0x3cc8f82a);
+            _0x14d514 = _0x477432(_0x1323f9 & _0x555ad2 | _0x2c1453 & ~_0x555ad2, _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0x3], 0xe, -0xb2af279);
+            _0x555ad2 = _0x477432(_0x14d514 & _0x2c1453 | _0x1323f9 & ~_0x2c1453, _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92 + 0x8], 0x14, 0x455a14ed);
+            _0x2c1453 = _0x477432(_0x555ad2 & _0x1323f9 | _0x14d514 & ~_0x1323f9, _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92 + 0xd], 0x5, -0x561c16fb);
+            _0x1323f9 = _0x477432(_0x2c1453 & _0x14d514 | _0x555ad2 & ~_0x14d514, _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92 + 0x2], 0x9, -0x3105c08);
+            _0x14d514 = _0x477432(_0x1323f9 & _0x555ad2 | _0x2c1453 & ~_0x555ad2, _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0x7], 0xe, 0x676f02d9);
+            _0x555ad2 = _0x477432(_0x14d514 & _0x2c1453 | _0x1323f9 & ~_0x2c1453, _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92 + 0xc], 0x14, -0x72d5b376);
+            _0x2c1453 = _0x477432(_0x555ad2 ^ _0x14d514 ^ _0x1323f9, _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92 + 0x5], 0x4, -0x5c6be);
+            _0x1323f9 = _0x477432(_0x2c1453 ^ _0x555ad2 ^ _0x14d514, _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92 + 0x8], 0xb, -0x788e097f);
+            _0x14d514 = _0x477432(_0x1323f9 ^ _0x2c1453 ^ _0x555ad2, _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0xb], 0x10, 0x6d9d6122);
+            _0x555ad2 = _0x477432(_0x14d514 ^ _0x1323f9 ^ _0x2c1453, _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92 + 0xe], 0x17, -0x21ac7f4);
+            _0x2c1453 = _0x477432(_0x555ad2 ^ _0x14d514 ^ _0x1323f9, _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92 + 0x1], 0x4, -0x5b4115bc);
+            _0x1323f9 = _0x477432(_0x2c1453 ^ _0x555ad2 ^ _0x14d514, _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92 + 0x4], 0xb, 0x4bdecfa9);
+            _0x14d514 = _0x477432(_0x1323f9 ^ _0x2c1453 ^ _0x555ad2, _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0x7], 0x10, -0x944b4a0);
+            _0x555ad2 = _0x477432(_0x14d514 ^ _0x1323f9 ^ _0x2c1453, _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92 + 0xa], 0x17, -0x41404390);
+            _0x2c1453 = _0x477432(_0x555ad2 ^ _0x14d514 ^ _0x1323f9, _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92 + 0xd], 0x4, 0x289b7ec6);
+            _0x1323f9 = _0x477432(_0x2c1453 ^ _0x555ad2 ^ _0x14d514, _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92], 0xb, -0x155ed806);
+            _0x14d514 = _0x477432(_0x1323f9 ^ _0x2c1453 ^ _0x555ad2, _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0x3], 0x10, -0x2b10cf7b);
+            _0x555ad2 = _0x477432(_0x14d514 ^ _0x1323f9 ^ _0x2c1453, _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92 + 0x6], 0x17, 0x4881d05);
+            _0x2c1453 = _0x477432(_0x555ad2 ^ _0x14d514 ^ _0x1323f9, _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92 + 0x9], 0x4, -0x262b2fc7);
+            _0x1323f9 = _0x477432(_0x2c1453 ^ _0x555ad2 ^ _0x14d514, _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92 + 0xc], 0xb, -0x1924661b);
+            _0x14d514 = _0x477432(_0x1323f9 ^ _0x2c1453 ^ _0x555ad2, _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0xf], 0x10, 0x1fa27cf8);
+            _0x555ad2 = _0x477432(_0x14d514 ^ _0x1323f9 ^ _0x2c1453, _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92 + 0x2], 0x17, -0x3b53a99b);
+            _0x2c1453 = _0x477432(_0x14d514 ^ (_0x555ad2 | ~_0x1323f9), _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92], 0x6, -0xbd6ddbc);
+            _0x1323f9 = _0x477432(_0x555ad2 ^ (_0x2c1453 | ~_0x14d514), _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92 + 0x7], 0xa, 0x432aff97);
+            _0x14d514 = _0x477432(_0x2c1453 ^ (_0x1323f9 | ~_0x555ad2), _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0xe], 0xf, -0x546bdc59);
+            _0x555ad2 = _0x477432(_0x1323f9 ^ (_0x14d514 | ~_0x2c1453), _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92 + 0x5], 0x15, -0x36c5fc7);
+            _0x2c1453 = _0x477432(_0x14d514 ^ (_0x555ad2 | ~_0x1323f9), _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92 + 0xc], 0x6, 0x655b59c3);
+            _0x1323f9 = _0x477432(_0x555ad2 ^ (_0x2c1453 | ~_0x14d514), _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92 + 0x3], 0xa, -0x70f3336e);
+            _0x14d514 = _0x477432(_0x2c1453 ^ (_0x1323f9 | ~_0x555ad2), _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0xa], 0xf, -0x100b83);
+            _0x555ad2 = _0x477432(_0x1323f9 ^ (_0x14d514 | ~_0x2c1453), _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92 + 0x1], 0x15, -0x7a7ba22f);
+            _0x2c1453 = _0x477432(_0x14d514 ^ (_0x555ad2 | ~_0x1323f9), _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92 + 0x8], 0x6, 0x6fa87e4f);
+            _0x1323f9 = _0x477432(_0x555ad2 ^ (_0x2c1453 | ~_0x14d514), _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92 + 0xf], 0xa, -0x1d31920);
+            _0x14d514 = _0x477432(_0x2c1453 ^ (_0x1323f9 | ~_0x555ad2), _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0x6], 0xf, -0x5cfebcec);
+            _0x555ad2 = _0x477432(_0x1323f9 ^ (_0x14d514 | ~_0x2c1453), _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92 + 0xd], 0x15, 0x4e0811a1);
+            _0x2c1453 = _0x477432(_0x14d514 ^ (_0x555ad2 | ~_0x1323f9), _0x2c1453, _0x555ad2, _0x3a16cb[_0x486a92 + 0x4], 0x6, -0x8ac817e);
+            _0x1323f9 = _0x477432(_0x555ad2 ^ (_0x2c1453 | ~_0x14d514), _0x1323f9, _0x2c1453, _0x3a16cb[_0x486a92 + 0xb], 0xa, -0x42c50dcb);
+            _0x14d514 = _0x477432(_0x2c1453 ^ (_0x1323f9 | ~_0x555ad2), _0x14d514, _0x1323f9, _0x3a16cb[_0x486a92 + 0x2], 0xf, 0x2ad7d2bb);
+            _0x555ad2 = _0x477432(_0x1323f9 ^ (_0x14d514 | ~_0x2c1453), _0x555ad2, _0x14d514, _0x3a16cb[_0x486a92 + 0x9], 0x15, -0x14792c6f);
+            _0x2c1453 = _0x1f391a(_0x2c1453, _0x28f8fd);
+            _0x555ad2 = _0x1f391a(_0x555ad2, _0x3356db);
+            _0x14d514 = _0x1f391a(_0x14d514, _0x3adc43);
+            _0x1323f9 = _0x1f391a(_0x1323f9, _0x4efb82);
+          }
+          return [_0x2c1453, _0x555ad2, _0x14d514, _0x1323f9];
+        }(function (_0x38e734) {
+          if (0x0 === _0x38e734.length) {
+            return [];
+          }
+          const _0x1423d6 = 0x8 * _0x38e734.length;
+          const _0x427da6 = new Uint32Array(0xe + (_0x1423d6 + 0x40 >>> 0x9 << 0x4) + 0x1);
+          for (let _0x5e5cf9 = 0x0; _0x5e5cf9 < _0x1423d6; _0x5e5cf9 += 0x8) {
+            _0x427da6[_0x5e5cf9 >> 0x5] |= (0xff & _0x38e734[_0x5e5cf9 / 0x8]) << _0x5e5cf9 % 0x20;
+          }
+          return _0x427da6;
+        }(_0x5e54a6), 0x8 * _0x5e54a6.length));
+      };
+      _0x55d515['default'] = _0x2e06af;
+    },
+    0x316: (_0x5515ff, _0x38b979) => {
+      'use strict';
+
+      Object.defineProperty(_0x38b979, "__esModule", {
+        'value': true
+      });
+      _0x38b979["default"] = undefined;
+      var _0x2acac0 = {
+        'randomUUID': "undefined" != typeof crypto && crypto.randomUUID && crypto.randomUUID.bind(crypto)
+      };
+      _0x38b979['default'] = _0x2acac0;
+    },
+    0x13a: (_0x3c4ef7, _0x400af8) => {
+      'use strict';
+
+      Object.defineProperty(_0x400af8, '__esModule', {
+        'value': true
+      });
+      _0x400af8['default'] = undefined;
+      _0x400af8["default"] = '00000000-0000-0000-0000-000000000000';
+    },
+    0xde: (_0x236c60, _0x555a41, _0x177c50) => {
+      'use strict';
+
+      Object.defineProperty(_0x555a41, "__esModule", {
+        'value': true
+      });
+      _0x555a41["default"] = undefined;
+      var _0x1abd37;
+      var _0x49a284 = (_0x1abd37 = _0x177c50(0x1b3)) && _0x1abd37.__esModule ? _0x1abd37 : {
+        'default': _0x1abd37
+      };
+      var _0x207f73 = function (_0x830f4e) {
+        0x0;
+        if (!_0x49a284['default'](_0x830f4e)) {
+          throw TypeError("Invalid UUID");
+        }
+        let _0x3f24e6;
+        const _0x425482 = new Uint8Array(0x10);
+        _0x425482[0x0] = (_0x3f24e6 = parseInt(_0x830f4e.slice(0x0, 0x8), 0x10)) >>> 0x18;
+        _0x425482[0x1] = _0x3f24e6 >>> 0x10 & 0xff;
+        _0x425482[0x2] = _0x3f24e6 >>> 0x8 & 0xff;
+        _0x425482[0x3] = 0xff & _0x3f24e6;
+        _0x425482[0x4] = (_0x3f24e6 = parseInt(_0x830f4e.slice(0x9, 0xd), 0x10)) >>> 0x8;
+        _0x425482[0x5] = 0xff & _0x3f24e6;
+        _0x425482[0x6] = (_0x3f24e6 = parseInt(_0x830f4e.slice(0xe, 0x12), 0x10)) >>> 0x8;
+        _0x425482[0x7] = 0xff & _0x3f24e6;
+        _0x425482[0x8] = (_0x3f24e6 = parseInt(_0x830f4e.slice(0x13, 0x17), 0x10)) >>> 0x8;
+        _0x425482[0x9] = 0xff & _0x3f24e6;
+        _0x425482[0xa] = (_0x3f24e6 = parseInt(_0x830f4e.slice(0x18, 0x24), 0x10)) / 0x10000000000 & 0xff;
+        _0x425482[0xb] = _0x3f24e6 / 0x100000000 & 0xff;
+        _0x425482[0xc] = _0x3f24e6 >>> 0x18 & 0xff;
+        _0x425482[0xd] = _0x3f24e6 >>> 0x10 & 0xff;
+        _0x425482[0xe] = _0x3f24e6 >>> 0x8 & 0xff;
+        _0x425482[0xf] = 0xff & _0x3f24e6;
+        return _0x425482;
+      };
+      _0x555a41["default"] = _0x207f73;
+    },
+    0x3a: (_0x1aa22d, _0x112b1a) => {
+      'use strict';
+
+      Object.defineProperty(_0x112b1a, '__esModule', {
+        'value': true
+      });
+      _0x112b1a["default"] = undefined;
+      _0x112b1a["default"] = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
+    },
+    0x13f: (_0x515c84, _0x72af48) => {
+      'use strict';
+
+      let _0x46b815;
+      Object.defineProperty(_0x72af48, '__esModule', {
+        'value': true
+      });
+      _0x72af48["default"] = function () {
+        if (!_0x46b815 && (_0x46b815 = 'undefined' != typeof crypto && crypto.getRandomValues && crypto.getRandomValues.bind(crypto), !_0x46b815)) {
+          throw new Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");
+        }
+        return _0x46b815(_0x28742d);
+      };
+      const _0x28742d = new Uint8Array(0x10);
+    },
+    0x2f5: (_0x5d89d3, _0x2428f2) => {
+      'use strict';
+
+      function _0x1cbbaf(_0x42df66, _0x30f0d1, _0x5d2e03, _0x4e9e14) {
+        switch (_0x42df66) {
+          case 0x0:
+            return _0x30f0d1 & _0x5d2e03 ^ ~_0x30f0d1 & _0x4e9e14;
+          case 0x1:
+          case 0x3:
+            return _0x30f0d1 ^ _0x5d2e03 ^ _0x4e9e14;
+          case 0x2:
+            return _0x30f0d1 & _0x5d2e03 ^ _0x30f0d1 & _0x4e9e14 ^ _0x5d2e03 & _0x4e9e14;
+        }
+      }
+      Object.defineProperty(_0x2428f2, "__esModule", {
+        'value': true
+      });
+      _0x2428f2["default"] = undefined;
+      var _0x1f2f81 = function (_0x52b8b2) {
+        const _0x31964d = [0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6];
+        const _0x1e5ba2 = [0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476, 0xc3d2e1f0];
+        if ('string' == typeof _0x52b8b2) {
+          const _0x5ea4e5 = unescape(encodeURIComponent(_0x52b8b2));
+          _0x52b8b2 = [];
+          for (let _0x943feb = 0x0; _0x943feb < _0x5ea4e5.length; ++_0x943feb) {
+            _0x52b8b2.push(_0x5ea4e5.charCodeAt(_0x943feb));
+          }
+        } else if (!Array.isArray(_0x52b8b2)) {
+          _0x52b8b2 = Array.prototype.slice.call(_0x52b8b2);
+        }
+        _0x52b8b2.push(0x80);
+        const _0x432003 = _0x52b8b2.length / 0x4 + 0x2;
+        const _0xe5e3e8 = Math.ceil(_0x432003 / 0x10);
+        const _0x463fa9 = new Array(_0xe5e3e8);
+        for (let _0xe3c53c = 0x0; _0xe3c53c < _0xe5e3e8; ++_0xe3c53c) {
+          const _0x515fab = new Uint32Array(0x10);
+          for (let _0x509ad8 = 0x0; _0x509ad8 < 0x10; ++_0x509ad8) {
+            _0x515fab[_0x509ad8] = _0x52b8b2[0x40 * _0xe3c53c + 0x4 * _0x509ad8] << 0x18 | _0x52b8b2[0x40 * _0xe3c53c + 0x4 * _0x509ad8 + 0x1] << 0x10 | _0x52b8b2[0x40 * _0xe3c53c + 0x4 * _0x509ad8 + 0x2] << 0x8 | _0x52b8b2[0x40 * _0xe3c53c + 0x4 * _0x509ad8 + 0x3];
+          }
+          _0x463fa9[_0xe3c53c] = _0x515fab;
+        }
+        _0x463fa9[_0xe5e3e8 - 0x1][0xe] = 0x8 * (_0x52b8b2.length - 0x1) / Math.pow(0x2, 0x20);
+        _0x463fa9[_0xe5e3e8 - 0x1][0xe] = Math.floor(_0x463fa9[_0xe5e3e8 - 0x1][0xe]);
+        _0x463fa9[_0xe5e3e8 - 0x1][0xf] = 0x8 * (_0x52b8b2.length - 0x1) & 0xffffffff;
+        for (let _0x5e5179 = 0x0; _0x5e5179 < _0xe5e3e8; ++_0x5e5179) {
+          const _0x4f6c3d = new Uint32Array(0x50);
+          for (let _0x35addf = 0x0; _0x35addf < 0x10; ++_0x35addf) {
+            _0x4f6c3d[_0x35addf] = _0x463fa9[_0x5e5179][_0x35addf];
+          }
+          for (let _0x2c6aa1 = 0x10; _0x2c6aa1 < 0x50; ++_0x2c6aa1) {
+            _0x4f6c3d[_0x2c6aa1] = (_0x4f6c3d[_0x2c6aa1 - 0x3] ^ _0x4f6c3d[_0x2c6aa1 - 0x8] ^ _0x4f6c3d[_0x2c6aa1 - 0xe] ^ _0x4f6c3d[_0x2c6aa1 - 0x10]) << 0x1 | (_0x4f6c3d[_0x2c6aa1 - 0x3] ^ _0x4f6c3d[_0x2c6aa1 - 0x8] ^ _0x4f6c3d[_0x2c6aa1 - 0xe] ^ _0x4f6c3d[_0x2c6aa1 - 0x10]) >>> 31;
+          }
+          let _0x108635 = _0x1e5ba2[0x0];
+          let _0x1c3aa0 = _0x1e5ba2[0x1];
+          let _0xb0d405 = _0x1e5ba2[0x2];
+          let _0x304e73 = _0x1e5ba2[0x3];
+          let _0x405546 = _0x1e5ba2[0x4];
+          for (let _0x50acbc = 0x0; _0x50acbc < 0x50; ++_0x50acbc) {
+            const _0x198927 = Math.floor(_0x50acbc / 0x14);
+            const _0x38e43a = (_0x108635 << 0x5 | _0x108635 >>> 27) + _0x1cbbaf(_0x198927, _0x1c3aa0, _0xb0d405, _0x304e73) + _0x405546 + _0x31964d[_0x198927] + _0x4f6c3d[_0x50acbc] >>> 0x0;
+            _0x405546 = _0x304e73;
+            _0x304e73 = _0xb0d405;
+            _0xb0d405 = (_0x1c3aa0 << 0x1e | _0x1c3aa0 >>> 2) >>> 0x0;
+            _0x1c3aa0 = _0x108635;
+            _0x108635 = _0x38e43a;
+          }
+          _0x1e5ba2[0x0] = _0x1e5ba2[0x0] + _0x108635 >>> 0x0;
+          _0x1e5ba2[0x1] = _0x1e5ba2[0x1] + _0x1c3aa0 >>> 0x0;
+          _0x1e5ba2[0x2] = _0x1e5ba2[0x2] + _0xb0d405 >>> 0x0;
+          _0x1e5ba2[0x3] = _0x1e5ba2[0x3] + _0x304e73 >>> 0x0;
+          _0x1e5ba2[0x4] = _0x1e5ba2[0x4] + _0x405546 >>> 0x0;
+        }
+        return [_0x1e5ba2[0x0] >> 0x18 & 0xff, _0x1e5ba2[0x0] >> 0x10 & 0xff, _0x1e5ba2[0x0] >> 0x8 & 0xff, 0xff & _0x1e5ba2[0x0], _0x1e5ba2[0x1] >> 0x18 & 0xff, _0x1e5ba2[0x1] >> 0x10 & 0xff, _0x1e5ba2[0x1] >> 0x8 & 0xff, 0xff & _0x1e5ba2[0x1], _0x1e5ba2[0x2] >> 0x18 & 0xff, _0x1e5ba2[0x2] >> 0x10 & 0xff, _0x1e5ba2[0x2] >> 0x8 & 0xff, 0xff & _0x1e5ba2[0x2], _0x1e5ba2[0x3] >> 0x18 & 0xff, _0x1e5ba2[0x3] >> 0x10 & 0xff, _0x1e5ba2[0x3] >> 0x8 & 0xff, 0xff & _0x1e5ba2[0x3], _0x1e5ba2[0x4] >> 0x18 & 0xff, _0x1e5ba2[0x4] >> 0x10 & 0xff, _0x1e5ba2[0x4] >> 0x8 & 0xff, 0xff & _0x1e5ba2[0x4]];
+      };
+      _0x2428f2["default"] = _0x1f2f81;
+    },
+    0x8: (_0x5b9f83, _0x3033c8, _0xfb650c) => {
+      'use strict';
+
+      Object.defineProperty(_0x3033c8, "__esModule", {
+        'value': true
+      });
+      _0x3033c8["default"] = undefined;
+      _0x3033c8.unsafeStringify = _0x224015;
+      var _0x5d51d8;
+      var _0xa8c6ee = (_0x5d51d8 = _0xfb650c(0x1b3)) && _0x5d51d8.__esModule ? _0x5d51d8 : {
+        'default': _0x5d51d8
+      };
+      const _0x1a7144 = [];
+      for (let _0x17fd63 = 0x0; _0x17fd63 < 0x100; ++_0x17fd63) {
+        _0x1a7144.push((_0x17fd63 + 0x100).toString(0x10).slice(0x1));
+      }
+      function _0x224015(_0x136c2a, _0x5940ac = 0x0) {
+        return (_0x1a7144[_0x136c2a[_0x5940ac + 0x0]] + _0x1a7144[_0x136c2a[_0x5940ac + 0x1]] + _0x1a7144[_0x136c2a[_0x5940ac + 0x2]] + _0x1a7144[_0x136c2a[_0x5940ac + 0x3]] + '-' + _0x1a7144[_0x136c2a[_0x5940ac + 0x4]] + _0x1a7144[_0x136c2a[_0x5940ac + 0x5]] + '-' + _0x1a7144[_0x136c2a[_0x5940ac + 0x6]] + _0x1a7144[_0x136c2a[_0x5940ac + 0x7]] + '-' + _0x1a7144[_0x136c2a[_0x5940ac + 0x8]] + _0x1a7144[_0x136c2a[_0x5940ac + 0x9]] + '-' + _0x1a7144[_0x136c2a[_0x5940ac + 0xa]] + _0x1a7144[_0x136c2a[_0x5940ac + 0xb]] + _0x1a7144[_0x136c2a[_0x5940ac + 0xc]] + _0x1a7144[_0x136c2a[_0x5940ac + 0xd]] + _0x1a7144[_0x136c2a[_0x5940ac + 0xe]] + _0x1a7144[_0x136c2a[_0x5940ac + 0xf]]).toLowerCase();
+      }
+      var _0x3e252d = function (_0x5ececf, _0x7d95a7 = 0x0) {
+        const _0x2f4baf = _0x224015(_0x5ececf, _0x7d95a7);
+        0x0;
+        if (!_0xa8c6ee['default'](_0x2f4baf)) {
+          throw TypeError("Stringified UUID is invalid");
+        }
+        return _0x2f4baf;
+      };
+      _0x3033c8["default"] = _0x3e252d;
+    },
+    0x3de: (_0x43d349, _0x51a093, _0x139f95) => {
+      'use strict';
+
+      Object.defineProperty(_0x51a093, '__esModule', {
+        'value': true
+      });
+      _0x51a093["default"] = undefined;
+      var _0x50b6d3;
+      var _0x89906b = (_0x50b6d3 = _0x139f95(0x13f)) && _0x50b6d3.__esModule ? _0x50b6d3 : {
+        'default': _0x50b6d3
+      };
+      var _0x46d3f9 = _0x139f95(0x8);
+      let _0x5f0a1c;
+      let _0x226eee;
+      let _0x403ada = 0x0;
+      let _0x571f33 = 0x0;
+      var _0x57ffb1 = function (_0x26e462, _0x35117d, _0x554cd2) {
+        let _0x378655 = _0x35117d && _0x554cd2 || 0x0;
+        const _0x2faf0d = _0x35117d || new Array(0x10);
+        let _0x2c55fa = (_0x26e462 = _0x26e462 || {}).node || _0x5f0a1c;
+        let _0x130461 = undefined !== _0x26e462.clockseq ? _0x26e462.clockseq : _0x226eee;
+        if (null == _0x2c55fa || null == _0x130461) {
+          const _0x1f27a9 = _0x26e462.random || (_0x26e462.rng || _0x89906b["default"])();
+          if (null == _0x2c55fa) {
+            _0x2c55fa = _0x5f0a1c = [0x1 | _0x1f27a9[0x0], _0x1f27a9[0x1], _0x1f27a9[0x2], _0x1f27a9[0x3], _0x1f27a9[0x4], _0x1f27a9[0x5]];
+          }
+          if (null == _0x130461) {
+            _0x130461 = _0x226eee = 0x3fff & (_0x1f27a9[0x6] << 0x8 | _0x1f27a9[0x7]);
+          }
+        }
+        let _0x2d31ff = undefined !== _0x26e462.msecs ? _0x26e462.msecs : Date.now();
+        let _0x487e0c = undefined !== _0x26e462.nsecs ? _0x26e462.nsecs : _0x571f33 + 0x1;
+        const _0x34bdee = _0x2d31ff - _0x403ada + (_0x487e0c - _0x571f33) / 0x2710;
+        if (_0x34bdee < 0x0 && undefined === _0x26e462.clockseq) {
+          _0x130461 = _0x130461 + 0x1 & 0x3fff;
+        }
+        if ((_0x34bdee < 0x0 || _0x2d31ff > _0x403ada) && undefined === _0x26e462.nsecs) {
+          _0x487e0c = 0x0;
+        }
+        if (_0x487e0c >= 0x2710) {
+          throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
+        }
+        _0x403ada = _0x2d31ff;
+        _0x571f33 = _0x487e0c;
+        _0x226eee = _0x130461;
+        _0x2d31ff += 0xb1d069b5400;
+        const _0x5e6b79 = (0x2710 * (0xfffffff & _0x2d31ff) + _0x487e0c) % 0x100000000;
+        _0x2faf0d[_0x378655++] = _0x5e6b79 >>> 0x18 & 0xff;
+        _0x2faf0d[_0x378655++] = _0x5e6b79 >>> 0x10 & 0xff;
+        _0x2faf0d[_0x378655++] = _0x5e6b79 >>> 0x8 & 0xff;
+        _0x2faf0d[_0x378655++] = 0xff & _0x5e6b79;
+        const _0x4d3bc3 = _0x2d31ff / 0x100000000 * 0x2710 & 0xfffffff;
+        _0x2faf0d[_0x378655++] = _0x4d3bc3 >>> 0x8 & 0xff;
+        _0x2faf0d[_0x378655++] = 0xff & _0x4d3bc3;
+        _0x2faf0d[_0x378655++] = _0x4d3bc3 >>> 0x18 & 0xf | 0x10;
+        _0x2faf0d[_0x378655++] = _0x4d3bc3 >>> 0x10 & 0xff;
+        _0x2faf0d[_0x378655++] = _0x130461 >>> 0x8 | 0x80;
+        _0x2faf0d[_0x378655++] = 0xff & _0x130461;
+        for (let _0xad3c67 = 0x0; _0xad3c67 < 0x6; ++_0xad3c67) {
+          _0x2faf0d[_0x378655 + _0xad3c67] = _0x2c55fa[_0xad3c67];
+        }
+        return _0x35117d || (0x0, _0x46d3f9.unsafeStringify)(_0x2faf0d);
+      };
+      _0x51a093["default"] = _0x57ffb1;
+    },
+    0xed: (_0x21601a, _0x5e4018, _0xf5f422) => {
+      'use strict';
+
+      Object.defineProperty(_0x5e4018, "__esModule", {
+        'value': true
+      });
+      _0x5e4018["default"] = undefined;
+      var _0xdecca0 = _0xf5f422(0x39d) && _0xf5f422(0x39d).__esModule ? _0xf5f422(0x39d) : {
+        'default': _0xf5f422(0x39d)
+      };
+      var _0xc4b923 = _0xf5f422(0xa3) && _0xf5f422(0xa3).__esModule ? _0xf5f422(0xa3) : {
+        'default': _0xf5f422(0xa3)
+      };
+      0x0;
+      var _0x58d66a = _0xdecca0['default']('v3', 0x30, _0xc4b923["default"]);
+      _0x5e4018["default"] = _0x58d66a;
+    },
+    0x39d: (_0x50f22f, _0x3ab608, _0x53685b) => {
+      'use strict';
+
+      Object.defineProperty(_0x3ab608, "__esModule", {
+        'value': true
+      });
+      _0x3ab608.URL = _0x3ab608.DNS = undefined;
+      _0x3ab608["default"] = function (_0x1cf681, _0x3dac4a, _0x538efc) {
+        function _0x1a8ac8(_0x3d99af, _0x216ff9, _0x15a334, _0x10242c) {
+          var _0x59a657;
+          if ("string" == typeof _0x3d99af) {
+            _0x3d99af = function (_0x5f13c3) {
+              _0x5f13c3 = unescape(encodeURIComponent(_0x5f13c3));
+              const _0x3433bf = [];
+              for (let _0xc77408 = 0x0; _0xc77408 < _0x5f13c3.length; ++_0xc77408) {
+                _0x3433bf.push(_0x5f13c3.charCodeAt(_0xc77408));
+              }
+              return _0x3433bf;
+            }(_0x3d99af);
+          }
+          if ("string" == typeof _0x216ff9) {
+            0x0;
+            _0x216ff9 = _0x345fa4["default"](_0x216ff9);
+          }
+          if (0x10 !== (null === (_0x59a657 = _0x216ff9) || undefined === _0x59a657 ? undefined : _0x59a657.length)) {
+            throw TypeError("Namespace must be array-like (16 iterable integer values, 0-255)");
+          }
+          let _0x1c9438 = new Uint8Array(0x10 + _0x3d99af.length);
+          _0x1c9438.set(_0x216ff9);
+          _0x1c9438.set(_0x3d99af, _0x216ff9.length);
+          _0x1c9438 = _0x538efc(_0x1c9438);
+          _0x1c9438[0x6] = 0xf & _0x1c9438[0x6] | _0x3dac4a;
+          _0x1c9438[0x8] = 0x3f & _0x1c9438[0x8] | 0x80;
+          if (_0x15a334) {
+            _0x10242c = _0x10242c || 0x0;
+            for (let _0x856895 = 0x0; _0x856895 < 0x10; ++_0x856895) {
+              _0x15a334[_0x10242c + _0x856895] = _0x1c9438[_0x856895];
+            }
+            return _0x15a334;
+          }
+          0x0;
+          return _0x3f951b.unsafeStringify(_0x1c9438);
+        }
+        try {
+          _0x1a8ac8.name = _0x1cf681;
+        } catch (_0x1d8132) {}
+        _0x1a8ac8.DNS = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
+        _0x1a8ac8.URL = '6ba7b811-9dad-11d1-80b4-00c04fd430c8';
+        return _0x1a8ac8;
+      };
+      var _0x2618ae;
+      var _0x3f951b = _0x53685b(0x8);
+      var _0x345fa4 = (_0x2618ae = _0x53685b(0xde)) && _0x2618ae.__esModule ? _0x2618ae : {
+        'default': _0x2618ae
+      };
+      _0x3ab608.DNS = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
+      _0x3ab608.URL = '6ba7b811-9dad-11d1-80b4-00c04fd430c8';
+    },
+    0x163: (_0x1ab6d6, _0x1befc1, _0x14b518) => {
+      'use strict';
+
+      Object.defineProperty(_0x1befc1, '__esModule', {
+        'value': true
+      });
+      _0x1befc1["default"] = undefined;
+      var _0x52a27d = _0x14b518(0x316) && _0x14b518(0x316).__esModule ? _0x14b518(0x316) : {
+        'default': _0x14b518(0x316)
+      };
+      var _0x65f30e = _0x14b518(0x13f) && _0x14b518(0x13f).__esModule ? _0x14b518(0x13f) : {
+        'default': _0x14b518(0x13f)
+      };
+      var _0x377ef4 = _0x14b518(0x8);
+      var _0x393013 = function (_0x36ca50, _0x507e1d, _0x51fe73) {
+        if (_0x52a27d["default"].randomUUID && !_0x507e1d && !_0x36ca50) {
+          return _0x52a27d['default'].randomUUID();
+        }
+        const _0x306b96 = (_0x36ca50 = _0x36ca50 || {}).random || (_0x36ca50.rng || _0x65f30e['default'])();
+        _0x306b96[0x6] = 0xf & _0x306b96[0x6] | 0x40;
+        _0x306b96[0x8] = 0x3f & _0x306b96[0x8] | 0x80;
+        if (_0x507e1d) {
+          _0x51fe73 = _0x51fe73 || 0x0;
+          for (let _0x392d56 = 0x0; _0x392d56 < 0x10; ++_0x392d56) {
+            _0x507e1d[_0x51fe73 + _0x392d56] = _0x306b96[_0x392d56];
+          }
+          return _0x507e1d;
+        }
+        0x0;
+        return _0x377ef4.unsafeStringify(_0x306b96);
+      };
+      _0x1befc1["default"] = _0x393013;
+    },
+    0x2fc: (_0x55f94d, _0x5b60d4, _0xa34250) => {
+      'use strict';
+
+      Object.defineProperty(_0x5b60d4, '__esModule', {
+        'value': true
+      });
+      _0x5b60d4["default"] = undefined;
+      var _0x33207d = _0xa34250(0x39d) && _0xa34250(0x39d).__esModule ? _0xa34250(0x39d) : {
+        'default': _0xa34250(0x39d)
+      };
+      var _0x294796 = _0xa34250(0x2f5) && _0xa34250(0x2f5).__esModule ? _0xa34250(0x2f5) : {
+        'default': _0xa34250(0x2f5)
+      };
+      0x0;
+      var _0x108ea4 = _0x33207d["default"]('v5', 0x50, _0x294796['default']);
+      _0x5b60d4['default'] = _0x108ea4;
+    },
+    0x1b3: (_0x2cfefe, _0xd31488, _0x4db327) => {
+      'use strict';
+
+      Object.defineProperty(_0xd31488, "__esModule", {
+        'value': true
+      });
+      _0xd31488["default"] = undefined;
+      var _0x4853e9;
+      var _0x3b1717 = (_0x4853e9 = _0x4db327(0x3a)) && _0x4853e9.__esModule ? _0x4853e9 : {
+        'default': _0x4853e9
+      };
+      var _0x455ef4 = function (_0x31a361) {
+        return "string" == typeof _0x31a361 && _0x3b1717["default"].test(_0x31a361);
+      };
+      _0xd31488["default"] = _0x455ef4;
+    },
+    0x1d0: (_0xcc57a2, _0x572ec8, _0x2f876e) => {
+      'use strict';
+
+      Object.defineProperty(_0x572ec8, "__esModule", {
+        'value': true
+      });
+      _0x572ec8["default"] = undefined;
+      var _0x31eb2f;
+      var _0x279920 = (_0x31eb2f = _0x2f876e(0x1b3)) && _0x31eb2f.__esModule ? _0x31eb2f : {
+        'default': _0x31eb2f
+      };
+      var _0x22b0bc = function (_0x7d07e2) {
+        0x0;
+        if (!_0x279920["default"](_0x7d07e2)) {
+          throw TypeError("Invalid UUID");
+        }
+        return parseInt(_0x7d07e2.slice(0xe, 0xf), 0x10);
+      };
+      _0x572ec8["default"] = _0x22b0bc;
+    },
+    0x93: _0x15cd14 => {
+      'use strict';
+
+      _0x15cd14.exports = JSON.parse("{\"name\":\"bytebrew-web-sdk\",\"version\":\"1.0.1\",\"description\":\"Official ByteBrew Web SDK\",\"main\":\"./dist/ByteBrewSDK.js\",\"types\":\"./dist/types/ByteBrew.d.ts\",\"files\":[\"dist\"],\"keywords\":[\"bytebrew\",\"analytics\"],\"scripts\":{\"build\":\"node distPreBuild.js && tsc -p tsconfig.dist.json && webpack --config webpack.dist.config.js && node distPostBuild.js && npm pack\"},\"author\":\"ByteBrew <contact@bytebrew.io> (https://github.com/ByteBrewIO)\",\"license\":\"MIT\",\"homepage\":\"https://github.com/ByteBrewIO/bytebrew-web-sdk\",\"bugs\":{\"url\":\"https://github.com/ByteBrewIO/bytebrew-web-sdk/issues\"},\"publishConfig\":{\"registry\":\"https://registry.npmjs.org/\"},\"devDependencies\":{\"@babel/preset-env\":\"^7.22.14\",\"@types/js-cookie\":\"^3.0.3\",\"@types/uuid\":\"^9.0.2\",\"babel-loader\":\"^9.1.3\",\"webpack\":\"^5.88.2\",\"webpack-cli\":\"^5.1.4\",\"webpack-obfuscator\":\"^3.5.1\"},\"dependencies\":{\"js-cookie\":\"^3.0.5\",\"ts-loader\":\"^9.5.1\",\"uuid\":\"^9.0.0\"}}");
+    }
+  };
+  var _0x4b2597 = {};
+  function _0x169560(_0x379687) {
+    var _0x55ad70 = _0x4b2597[_0x379687];
+    if (undefined !== _0x55ad70) {
+      return _0x55ad70.exports;
+    }
+    var _0x237542 = _0x4b2597[_0x379687] = {
+      'exports': {}
+    };
+    _0x513cd3[_0x379687].call(_0x237542.exports, _0x237542, _0x237542.exports, _0x169560);
+    return _0x237542.exports;
+  }
+  var _0x4843bc = {};
+  (() => {
+    'use strict';
+
+    Object.defineProperty(_0x4843bc, '__esModule', {
+      'value': true
+    });
+    _0x4843bc.ByteBrew = undefined;
+    var _0x110a32 = _0x169560(0x2cf);
+    Object.defineProperty(_0x4843bc, "ByteBrew", {
+      'enumerable': true,
+      'get': function () {
+        return _0x110a32.ByteBrew;
+      }
+    });
+  })();
+  return _0x4843bc;
+})());

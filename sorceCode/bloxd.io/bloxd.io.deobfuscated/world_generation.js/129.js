@@ -1,0 +1,1 @@
+module.exports = require("./127.js").EventEmitter;
