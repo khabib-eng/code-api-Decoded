@@ -35,7 +35,7 @@ Code Block to make the player jump:
 f = api.setVelocity(myId, 0, 9, 0)
 ```
 
-Push the player
+Push the player:
 
 ```js
 api.applyImpulse(myId, 9, 0, 9)
@@ -579,6 +579,17 @@ getOtherEntitySetting(relevantPlayerId, targetedEntityId, settingName)
 playParticleEffect(opts, clientPredictedBy)
 
 /**
+ * Animates the given entity.
+ *
+ * @param {EntityId} entityId
+ * @param {AnimationSchema | BlockbenchAnimationSchema} animationSchema
+ * @param {number} [initialTimeFraction]
+ * @param {number} [animationSpeed]
+ * @returns {void}
+ */
+animateEntity(entityId, animationSchema, initialTimeFraction, animationSpeed)
+
+/**
  * Get the in game name of an entity.
  *
  * @param {EntityId} entityId
@@ -862,6 +873,19 @@ getInitialItemMetadata(itemName)
  * @returns {AnyMetadataItem[K]}
  */
 getItemStat(lifeformId, itemName, stat)
+
+/**
+ * Set a stat attribute for a block or item
+ *
+ * NOTE: Only a subset of stats are customisable this way.
+ *
+ * @param {PlayerId} playerId
+ * @param {ItemName} itemName
+ * @param {K} stat
+ * @param {AnyMetadataItem[K]} value
+ * @returns {void}
+ */
+setItemStat(playerId, itemName, stat, value)
 
 /**
  * Set the direction the player is looking.
@@ -1297,7 +1321,7 @@ getBlockData(x, y, z)
 /**
  * Get the name of the lobby this game is running in.
  *
- * @returns {PNull<string>}
+ * @returns {string}
  */
 getLobbyName()
 
@@ -1759,7 +1783,7 @@ openShop(playerId, toggle, forceCategoryKey, onlyIfNonEmpty)
  * Apply an effect to a lifeform.
  * Can be an inbuilt effect E.g. "Speed" (speed boost), "Damage" (damage boost).
  * For inbuilt just pass the name of the effect and the functionality is handled in-engine.
- * For custom effect, you pass customEffectInfo. The icon can be an icon from "IngameIcons.ts" or a bloxd item name.
+ * For custom effect, you pass customEffectInfo. The icon can be an icon from "ingameIconTypes.ts" or a bloxd item name.
  * The custom effect onEndCb is an optional helper within which you can undo the effect you applied.
  * Note that onEndCb will not work for press to code boards, code blocks or world code.
  *
@@ -1789,7 +1813,8 @@ getEffects(lifeformId)
 removeEffect(lifeformId, name)
 
 /**
- * Change a part of a player's skin
+ * Change a part of a player's skin.
+ * UGC code is restricted to cosmetics from packs with ugcSelectable; internal code can use any cosmetics.
  *
  * @param {PlayerId} playerId - Player to change
  * @param {CosmeticType} cosmeticType - Type of cosmetic
@@ -2076,7 +2101,7 @@ enum ParticleSystemBlendMode {
     MultiplyAdd,
 }
 
-type RecipesForItem =
+type RecipesForItem = 
     {
         requires: { items: ItemName[]; amt: number }[]
         produces: number
@@ -2256,4 +2281,114 @@ type MeshEntityPhysicsOpts = {
     widthExpandAmt?: number // expand hitbox width by this amount
     vehicleOpts?: MeshEntityVehicleOpts // Unsupported for custom code
 }
+
+/**
+ * ANIMATION SCHEMA TYPES
+ *
+ * An animation schema describes how an entity should be positioned as time passes.
+ * For each node in the entity's skeleton, we define an animation timeline.
+ * A timeline is sequence of "key frames".
+ * A keyframe represents an important position; if this is a jumping animation,
+ * then an example of a keyframe would be the peak of the jump.
+ *
+ * When deciding how an entity should be positioned during an animation,
+ * we will usually find ourselves between two keyframes.
+ * For example, if our keyframes are at time fractions 0.0, 0.5 and 1.0,
+ * and the current time fraction is 0.3, then we will need to find a middle ground
+ * between the first and second keyframe.
+ * This process is known as interpolating, or "lerping".
+ * The default way of doing this is linear lerping; drawing a straight line between two points.
+ * An alternative is splining; drawing a curve.
+ */
+export type AnimationSchema = {
+    animationDurationMs: number
+    loop?: LoopModeSchema
+    nodeAnimations?: NodeSkeletonAnimationSchema
+}
+
+type LoopModeSchema = boolean | "hold-on-last-frame"
+
+type NodeSkeletonAnimationSchema = Record<NodeName, NodeAnimationSchema>
+
+type NodeAnimationSchema = {
+    timeline: AnimationTimelineSchema
+}
+
+type AnimationTimelineSchema = readonly KeyframeSchema[]
+
+type KeyframeSchema = {
+    timeFraction: number
+    rotation?: LerpPointSchema // Rotations are assumed to be in radians.
+}
+
+/**
+ * "pre" and "post" points exist to allow for discontinuities.
+ */
+export type LerpPointSchema =
+    | Point
+    | {
+            lerpMode?: LerpModeSchema
+            point: Point
+      }
+    | {
+            lerpMode?: LerpModeSchema
+            pre: Point // When lerping towards a point, we lerp towards its pre.
+            post: Point // When lerping away from a point, we lerp away from its post.
+      }
+
+/**
+ * "catmull-rom-spline" is a form of splining; drawing a curve between two points.
+ */
+export type LerpModeSchema = "linear" | "catmull-rom-spline"
+
+/**
+ * BLOCKBENCH ANIMATION SCHEMA TYPES
+ *
+ * We support native Blockbench animations. It should just be a case of copying and pasting
+ * the specific animation from the exported JSON file.
+ *
+ * Notable differences:
+ * - Blockbench animations do not use time fractions. Instead, they use absolute time.
+ * - The unit of time is seconds, not milliseconds.
+ * - The angular unit is degrees, not radians.
+ * - The x-axis is mirrored.
+ */
+export type BlockbenchAnimationSchema = {
+    animation_length: number // The duration of the animation in seconds.
+    loop?: BlockbenchLoopModeSchema
+    bones?: BlockbenchBonesAnimationSchema
+}
+
+type BlockbenchLoopModeSchema = boolean | "hold_on_last_frame"
+
+type BlockbenchBonesAnimationSchema = Record<NodeName, BlockbenchBoneAnimationSchema>
+
+type BlockbenchBoneAnimationSchema = {
+    rotation?: BlockbenchAnimationTimelineSchema // Blockbench rotations are in degrees.
+}
+
+type BlockbenchAnimationTimelineSchema = Point | Record<TimestampString, BlockbenchAnimationFrameSchema>
+
+/**
+ * "pre" and "post" points exist to allow for discontinuities.
+ */
+export type BlockbenchAnimationFrameSchema =
+    | Point
+    | {
+            lerp_mode?: BlockbenchLerpModeSchema
+            pre?: Point // When lerping towards a point, we lerp towards its pre.
+            post: Point // When lerping away from a point, we lerp away from its post.
+      }
+
+/**
+ * "catmullrom" is a form of splining; drawing a curve between two points.
+ */
+export type BlockbenchLerpModeSchema = "linear" | "catmullrom"
+
+/**
+ * The timestamp of the keyframe in seconds.
+ */
+type TimestampString = string
+
+type Point = Vec3
 ```

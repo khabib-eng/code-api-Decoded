@@ -9,7 +9,7 @@ onPlayerPickedUpItem onPlayerSelectInventorySlot onBlockStand
 onPlayerAttemptCraft onPlayerCraft onPlayerAttemptOpenChest
 onPlayerOpenedChest onPlayerMoveItemOutOfInventory onPlayerMoveInvenItem
 onPlayerMoveItemIntoIdxs onPlayerSwapInvenSlots onPlayerMoveInvenItemWithAmt
-onPlayerAttemptAltAction onPlayerAltAction onPlayerClick
+onPlayerAttemptAltAction onPlayerAltAction onPlayerClick onPlayerClickUp
 onClientOptionUpdated onMobSettingUpdated onInventoryUpdated onChestUpdated
 onWorldChangeBlock onCreateBloxdMeshEntity onEntityCollision
 onPlayerAttemptSpawnMob onWorldAttemptSpawnMob onPlayerSpawnMob
@@ -32,7 +32,7 @@ You can use `api.setCallbackValueFallback("callbackName", defaultValue)` to set 
 ```js
 /**
  * Called every tick, 20 times per second
- * @param {number} ms
+ * @param {number} ms - The fixed timestep, can be used as "milliseconds since last tick"
  */
 tick = (ms: number) => {}
 
@@ -297,6 +297,20 @@ onPlayerAltAction = (playerId: PlayerId, x: number, y: number, z: number, block:
 onPlayerClick = (playerId: PlayerId, wasAltClick: boolean, x: number, y: number, z: number, block: BlockName, targetEId: EntityId | null) => {}
 
 /**
+ * Called when a player releases a click (mouse-up on desktop, touch-end on mobile).
+ * Fires for both primary and secondary click releases.
+ * Keep in mind wasAltClick will always be false for touchscreen players.
+ * @param {PlayerId} playerId - The id of the player releasing click
+ * @param {boolean} wasAltClick - Whether the released click was an alt click (e.g. right click
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
+ * @param {BlockName} block
+ * @param {EntityId | null} targetEId
+ */
+onPlayerClickUp = (playerId: PlayerId, wasAltClick: boolean, x: number, y: number, z: number, block: BlockName, targetEId: EntityId | null) => {}
+
+/**
  * Called when a client option is updated
  * @param {PlayerId} playerId - The id of the player whose option was updated
  * @param {ClientOption} option - The option that was updated
@@ -526,9 +540,9 @@ onMobKilledOtherMob = (attackingMob: MobId, killedMob: MobId, damageDealt: numbe
  * Called when a player is affected by a new potion effect
  * @param {string} initiatorId - The id of the player who initiated the potion effect
  * @param {string} targetId - The id of the player who has started being affected
- * @param {"Speed" | "Damage Reduction" | "Damage" | "Invisible" | "Jump Boost" | "Knockback" | "Poisoned" | "Slowness" | "Weakness" | "Cleansed" | "Instant Damage" | "Health Regen" | ... 16 more ... | "Poopy"} effectName - The name of the potion effect
+ * @param {"Damage" | "Speed" | "Damage Reduction" | "Invisible" | "Jump Boost" | "Knockback" | "Poisoned" | "Slowness" | "Weakness" | "Cleansed" | "Instant Damage" | "Health Regen" | ... 16 more ... | "Poopy"} effectName - The name of the potion effect
  */
-onPlayerPotionEffect = (initiatorId: string, targetId: string, effectName: "Speed" | "Damage Reduction" | "Damage" | "Invisible" | "Jump Boost" | "Knockback" | "Poisoned" | "Slowness" | "Weakness" | "Cleansed" | "Instant Damage" | "Health Regen" | ... 16 more ... | "Poopy") => {}
+onPlayerPotionEffect = (initiatorId: string, targetId: string, effectName: "Damage" | "Speed" | "Damage Reduction" | "Invisible" | "Jump Boost" | "Knockback" | "Poisoned" | "Slowness" | "Weakness" | "Cleansed" | "Instant Damage" | "Health Regen" | ... 16 more ... | "Poopy") => {}
 
 /**
  * Called when a player is damaging a mesh entity
